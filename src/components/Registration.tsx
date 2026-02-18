@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { supabase } from '../lib/supabase';
+
 import { CheckCircle, AlertCircle } from 'lucide-react';
 
 export default function Registration() {
@@ -20,11 +20,10 @@ export default function Registration() {
     setMessage('');
 
     try {
-      const { error } = await supabase
-        .from('registrations')
-        .insert([formData]);
+      // Mock submission - simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500));
 
-      if (error) throw error;
+      console.log('Form submitted:', formData);
 
       setStatus('success');
       setMessage('Registration successful! We will contact you soon.');
