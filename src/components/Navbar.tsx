@@ -39,7 +39,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center space-x-3 cursor-pointer" onClick={() => scrollToSection('home')}>
-            <img src="/logo.png" alt="UTKALPRENEUR E-FEST 2026" className="h-16 w-auto" />
+            <img src="/logo.svg" alt="UTKALPRENEUR E-FEST 2026" className="h-16 w-auto" />
 
           </div>
 

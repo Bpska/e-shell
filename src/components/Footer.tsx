@@ -20,7 +20,7 @@ export default function Footer() {
               "Where Tradition Meets Innovation"
             </p>
             <p className="text-[#D9B68C] text-sm">
-              7th - 8th March 2026<br />
+
               Nalanda Institute of Technology
             </p>
           </div>

@@ -1,4 +1,4 @@
-import { Calendar, MapPin, ArrowRight } from 'lucide-react';
+import { MapPin, ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   const scrollToSection = (id: string) => {
@@ -18,9 +18,7 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
         <div className="animate-fadeIn">
-          <div className="inline-block mb-6 px-6 py-2 bg-[#7A1F1F] text-[#D4A017] rounded-full text-sm font-semibold border-2 border-[#D4A017]">
-            7th - 8th March 2026
-          </div>
+
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-[#7A1F1F] mb-6 tracking-tight">
             UTKALPRENEUR
@@ -37,10 +35,7 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 text-lg">
-            <div className="flex items-center gap-2 text-[#000000]">
-              <Calendar className="text-[#7A1F1F]" size={24} />
-              <span className="font-medium">7th - 8th March 2026</span>
-            </div>
+
             <div className="hidden sm:block w-2 h-2 rounded-full bg-[#7A1F1F]"></div>
             <div className="flex items-center gap-2 text-[#000000]">
               <MapPin className="text-[#7A1F1F]" size={24} />
