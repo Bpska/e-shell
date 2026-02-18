@@ -33,20 +33,14 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-[#F7E7C6] shadow-lg border-b-4 border-[#7A1F1F]' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#F7E7C6] shadow-lg border-b-4 border-[#7A1F1F]' : 'bg-transparent'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center space-x-3 cursor-pointer" onClick={() => scrollToSection('home')}>
-            <div className="w-12 h-12 bg-[#7A1F1F] rounded-full flex items-center justify-center border-2 border-[#D4A017]">
-              <span className="text-[#D4A017] font-bold text-xl">U</span>
-            </div>
-            <div>
-              <h1 className="text-[#7A1F1F] font-bold text-lg leading-tight">UTKALPRENEUR</h1>
-              <p className="text-[#7A1F1F] text-xs">E-FEST 2026</p>
-            </div>
+            <img src="/logo.png" alt="UTKALPRENEUR E-FEST 2026" className="h-16 w-auto" />
+
           </div>
 
           <div className="hidden md:flex items-center space-x-8">

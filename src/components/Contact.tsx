@@ -31,7 +31,7 @@ export default function Contact() {
                   <Mail className="text-[#D4A017] flex-shrink-0 mt-1" size={24} />
                   <div>
                     <h4 className="font-semibold text-[#F7E7C6] mb-1">Email</h4>
-                    <p className="text-white">utkalpreneur@nalanda.ac.in</p>
+                    <p className="text-white">utkalpreneurefest2k26@gmail.com</p>
                     <p className="text-white">ecell@nalanda.ac.in</p>
                   </div>
                 </div>

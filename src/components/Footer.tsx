@@ -14,13 +14,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-12 h-12 bg-[#D4A017] rounded-full flex items-center justify-center border-2 border-[#F7E7C6]">
-                <span className="text-[#7A1F1F] font-bold text-xl">U</span>
-              </div>
-              <div>
-                <h3 className="text-[#F7E7C6] font-bold text-lg leading-tight">UTKALPRENEUR</h3>
-                <p className="text-[#D4A017] text-xs">E-FEST 2026</p>
-              </div>
+              <img src="/logo.png" alt="UTKALPRENEUR E-FEST 2026" className="h-16 w-auto" />
             </div>
             <p className="text-[#F7E7C6] italic text-sm mb-4">
               "Where Tradition Meets Innovation"
@@ -52,7 +46,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-[#F7E7C6] text-sm">
                 <Mail size={16} className="text-[#D4A017]" />
-                <span>utkalpreneur@nalanda.ac.in</span>
+                <span>utkalpreneurefest2k26@gmail.com</span>
               </li>
               <li className="flex items-center gap-2 text-[#F7E7C6] text-sm">
                 <Phone size={16} className="text-[#D4A017]" />
