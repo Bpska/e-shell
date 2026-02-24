@@ -54,38 +54,44 @@ export default function Sponsorship() {
   };
 
   return (
-    <section id="sponsorship" className="py-20 bg-gradient-to-br from-[#F7E7C6] to-[#D9B68C]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#7A1F1F] mb-4">
-            Sponsorship Opportunities
+    <section id="sponsorship" className="py-24 bg-gradient-to-br from-[#F7E7C6] via-white to-[#F7E7C6] relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-full h-24 bg-[#D9B68C]/20 -skew-y-2 origin-top-right"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-24">
+          <h2 className="text-5xl md:text-6xl font-black text-[#7A1F1F] mb-4 uppercase tracking-tighter">
+            Partnership
           </h2>
-          <div className="w-24 h-1 bg-[#D4A017] mx-auto mb-6"></div>
-          <p className="text-xl text-[#000000] max-w-3xl mx-auto">
-            Partner with us to support entrepreneurship and gain maximum visibility
+          <div className="w-32 h-2 bg-[#D4A017] mx-auto rounded-full mb-6"></div>
+          <p className="text-xl text-gray-500 max-w-3xl mx-auto font-bold tracking-tight">
+            Empower the next generation of innovators and gain unmatched brand visibility
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid lg:grid-cols-3 gap-10 mb-20">
           {tiers.map((tier, index) => (
             <div
               key={index}
-              className={`bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 border-4 ${tier.borderColor}`}
+              className={`bg-white rounded-[3rem] shadow-2xl overflow-hidden transform hover:-translate-y-4 transition-all duration-500 border-2 ${tier.borderColor} group`}
             >
-              <div className={`bg-gradient-to-r ${tier.color} p-6 text-white text-center`}>
-                <div className="flex justify-center mb-3">
+              <div className={`bg-gradient-to-br ${tier.color} p-12 text-white text-center relative overflow-hidden`}>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+                <div className="flex justify-center mb-6 transform group-hover:scale-110 transition-transform">
                   {tier.icon}
                 </div>
-                <h3 className="text-3xl font-bold mb-2">{tier.name}</h3>
-                <p className="text-lg font-semibold">{tier.price}</p>
+                <h3 className="text-4xl font-black mb-2 tracking-tighter italic uppercase">{tier.name}</h3>
+                <div className="w-12 h-1 bg-white/40 mx-auto mb-4"></div>
+                <p className="text-xl font-black tracking-tight">{tier.price}</p>
               </div>
-              <div className="p-6">
-                <h4 className="font-bold text-[#7A1F1F] mb-4 text-lg">Benefits Include:</h4>
-                <ul className="space-y-3">
+              <div className="p-10">
+                <h4 className="font-black text-[#7A1F1F] mb-8 text-xs tracking-[0.3em] uppercase">Member Benefits</h4>
+                <ul className="space-y-6">
                   {tier.benefits.map((benefit, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <span className="text-[#D4A017] text-xl font-bold">✓</span>
-                      <span className="text-[#000000]">{benefit}</span>
+                    <li key={idx} className="flex items-start gap-4">
+                      <div className="w-6 h-6 rounded-full bg-[#D4A017]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <span className="text-[#D4A017] text-sm font-black">✓</span>
+                      </div>
+                      <span className="text-gray-700 font-bold text-sm leading-relaxed">{benefit}</span>
                     </li>
                   ))}
                 </ul>
@@ -97,10 +103,10 @@ export default function Sponsorship() {
         <div className="text-center">
           <button
             onClick={scrollToContact}
-            className="group inline-flex items-center gap-3 px-10 py-5 bg-[#7A1F1F] text-[#F7E7C6] rounded-lg font-bold text-xl hover:bg-[#D4A017] hover:text-[#000000] transition-all duration-300 transform hover:scale-105 shadow-2xl border-4 border-[#D4A017]"
+            className="premium-button group inline-flex items-center gap-4 px-12 py-6 bg-[#7A1F1F] text-[#F7E7C6] rounded-3xl font-black text-2xl border-b-8 border-[#5A1515]"
           >
-            Become a Sponsor
-            <ArrowRight className="group-hover:translate-x-2 transition-transform" size={24} />
+            BECOME A PARTNER
+            <ArrowRight className="group-hover:translate-x-3 transition-transform" size={32} />
           </button>
         </div>
       </div>

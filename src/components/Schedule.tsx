@@ -19,61 +19,70 @@ export default function Schedule() {
   };
 
   return (
-    <section id="schedule" className="py-20 bg-gradient-to-br from-[#7A1F1F] to-[#5A1515] text-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#D4A017]">
+    <section id="schedule" className="py-24 bg-[#7A1F1F] text-white relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#D4A017]/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-black/20 rounded-full blur-3xl -ml-48 -mb-48"></div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-black mb-4 text-[#D4A017] uppercase tracking-tighter italic">
             Event Schedule
           </h2>
-          <div className="w-24 h-1 bg-[#D4A017] mx-auto mb-6"></div>
-          <p className="text-xl text-[#F7E7C6]">
+          <div className="w-32 h-2 bg-[#D4A017] mx-auto rounded-full mb-6"></div>
+          <p className="text-xl text-[#F7E7C6] font-medium opacity-80">
             Two days of inspiration, innovation, and incredible experiences
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-[#F7E7C6] text-[#000000] rounded-2xl p-8 shadow-2xl border-4 border-[#D4A017]">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-[#7A1F1F] rounded-full flex items-center justify-center">
-                <span className="text-[#D4A017] font-bold text-xl">1</span>
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Day 1 */}
+          <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/10 shadow-2xl">
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-16 h-16 bg-[#D4A017] rounded-2xl flex items-center justify-center rotate-3 shadow-lg">
+                <span className="text-[#7A1F1F] font-black text-3xl">01</span>
               </div>
-              <h3 className="text-3xl font-bold text-[#7A1F1F]">Day 1</h3>
-              <span className="ml-auto text-sm font-semibold text-[#7A1F1F]">7th March</span>
+              <div>
+                <h3 className="text-4xl font-black text-[#D4A017] tracking-tight uppercase italic">Day 1</h3>
+                <span className="text-[#F7E7C6] font-bold tracking-widest uppercase text-sm">March 22nd</span>
+              </div>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-6">
               {schedule.day1.map((item, index) => (
-                <div key={index} className="flex gap-4 p-4 bg-white rounded-lg border-l-4 border-[#D4A017] hover:shadow-md transition-shadow">
-                  <div className="flex items-center gap-2 text-[#7A1F1F] font-bold min-w-[90px]">
-                    <Clock size={16} />
+                <div key={index} className="flex gap-6 p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-all group">
+                  <div className="flex items-center gap-2 text-[#D4A017] font-bold min-w-[100px]">
+                    <Clock size={18} className="group-hover:scale-110 transition-transform" />
                     <span className="text-sm">{item.time}</span>
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-bold text-[#7A1F1F] mb-1">{item.event}</h4>
-                    <p className="text-sm text-[#000000]">{item.description}</p>
+                    <h4 className="font-bold text-white text-lg mb-1 group-hover:text-[#D4A017] transition-colors">{item.event}</h4>
+                    <p className="text-sm text-[#F7E7C6] opacity-70">{item.description}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="bg-[#F7E7C6] text-[#000000] rounded-2xl p-8 shadow-2xl border-4 border-[#D4A017]">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-[#D4A017] rounded-full flex items-center justify-center">
-                <span className="text-[#7A1F1F] font-bold text-xl">2</span>
+          {/* Day 2 */}
+          <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/10 shadow-2xl">
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-16 h-16 bg-[#F7E7C6] rounded-2xl flex items-center justify-center -rotate-3 shadow-lg">
+                <span className="text-[#7A1F1F] font-black text-3xl">02</span>
               </div>
-              <h3 className="text-3xl font-bold text-[#D4A017]">Day 2</h3>
-              <span className="ml-auto text-sm font-semibold text-[#D4A017]">8th March</span>
+              <div>
+                <h3 className="text-4xl font-black text-[#F7E7C6] tracking-tight uppercase italic">Day 2</h3>
+                <span className="text-[#D4A017] font-bold tracking-widest uppercase text-sm">March 23rd</span>
+              </div>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-6">
               {schedule.day2.map((item, index) => (
-                <div key={index} className="flex gap-4 p-4 bg-white rounded-lg border-l-4 border-[#7A1F1F] hover:shadow-md transition-shadow">
-                  <div className="flex items-center gap-2 text-[#D4A017] font-bold min-w-[90px]">
-                    <Clock size={16} />
+                <div key={index} className="flex gap-6 p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-all group">
+                  <div className="flex items-center gap-2 text-[#F7E7C6] font-bold min-w-[100px]">
+                    <Clock size={18} className="group-hover:scale-110 transition-transform" />
                     <span className="text-sm">{item.time}</span>
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-bold text-[#D4A017] mb-1">{item.event}</h4>
-                    <p className="text-sm text-[#000000]">{item.description}</p>
+                    <h4 className="font-bold text-white text-lg mb-1 group-hover:text-[#F7E7C6] transition-colors">{item.event}</h4>
+                    <p className="text-sm text-[#D4A017] opacity-70">{item.description}</p>
                   </div>
                 </div>
               ))}

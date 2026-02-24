@@ -2,42 +2,44 @@ import { Eye, Target } from 'lucide-react';
 
 export default function VisionMission() {
   return (
-    <section className="py-20 bg-[#F7E7C6]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-white p-8 md:p-10 rounded-2xl shadow-xl border-4 border-[#7A1F1F] hover:shadow-2xl transition-shadow duration-300">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-[#7A1F1F] rounded-full flex items-center justify-center">
-                <Eye className="text-[#D4A017]" size={32} />
+    <section id="vision-mission" className="py-24 bg-[#F7E7C6] relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#7A1F1F]/5 rounded-full blur-3xl -mr-48 -mt-48"></div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid md:grid-cols-2 gap-16">
+          <div className="glass-card rounded-[3rem] p-12 border-2 border-[#7A1F1F]/10 hover:shadow-3xl transition-all duration-500 group">
+            <div className="flex items-center gap-6 mb-10">
+              <div className="w-20 h-20 bg-[#7A1F1F]/10 rounded-3xl flex items-center justify-center text-[#7A1F1F] group-hover:bg-[#7A1F1F] group-hover:text-white transition-all transform rotate-3">
+                <Eye size={40} />
               </div>
-              <h3 className="text-3xl font-bold text-[#7A1F1F]">Our Vision</h3>
+              <h3 className="text-4xl font-black text-[#7A1F1F] uppercase tracking-tighter italic">Our Vision</h3>
             </div>
-            <p className="text-lg text-[#000000] leading-relaxed">
-              To establish <span className="font-bold text-[#7A1F1F]">Odisha</span> as a hub of culturally rooted entrepreneurship, where innovation is inspired by heritage and businesses are built on the foundation of our rich traditions.
+            <p className="text-xl text-gray-700 font-bold leading-relaxed">
+              To establish <span className="text-[#7A1F1F]">Odisha</span> as a hub of culturally rooted entrepreneurship, where innovation is inspired by heritage.
             </p>
           </div>
 
-          <div className="bg-white p-8 md:p-10 rounded-2xl shadow-xl border-4 border-[#D4A017] hover:shadow-2xl transition-shadow duration-300">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-[#D4A017] rounded-full flex items-center justify-center">
-                <Target className="text-[#7A1F1F]" size={32} />
+          <div className="glass-card rounded-[3rem] p-12 border-2 border-[#D4A017]/20 hover:shadow-3xl transition-all duration-500 group scale-105 bg-white">
+            <div className="flex items-center gap-6 mb-10">
+              <div className="w-20 h-20 bg-[#D4A017]/10 rounded-3xl flex items-center justify-center text-[#D4A017] group-hover:bg-[#D4A017] group-hover:text-white transition-all transform -rotate-3">
+                <Target size={40} />
               </div>
-              <h3 className="text-3xl font-bold text-[#D4A017]">Our Mission</h3>
+              <h3 className="text-4xl font-black text-[#D4A017] uppercase tracking-tighter italic">Our Mission</h3>
             </div>
-            <ul className="space-y-3 text-lg text-[#000000]">
-              <li className="flex items-start gap-3">
-                <span className="text-[#D4A017] font-bold text-xl">•</span>
-                <span>Blend heritage with startup innovation</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-[#D4A017] font-bold text-xl">•</span>
-                <span>Provide learning and networking platforms</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-[#D4A017] font-bold text-xl">•</span>
-                <span>Encourage ethical, inclusive entrepreneurship</span>
-              </li>
-            </ul>
+            <div className="space-y-6">
+              {[
+                "Blend heritage with startup innovation",
+                "Provide learning and networking platforms",
+                "Encourage ethical, inclusive entrepreneurship"
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-4">
+                  <div className="w-6 h-6 rounded-full bg-[#D4A017]/20 flex items-center justify-center flex-shrink-0">
+                    <div className="w-2 h-2 bg-[#D4A017] rounded-full"></div>
+                  </div>
+                  <p className="text-lg text-gray-700 font-bold">{item}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

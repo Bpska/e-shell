@@ -30,29 +30,33 @@ export default function Stakeholders() {
   ];
 
   return (
-    <section className="py-20 bg-[#F7E7C6]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#7A1F1F] mb-4">
-            Who Should Attend?
+    <section id="stakeholders" className="py-24 bg-white relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-[#F7E7C6] to-transparent"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-black text-[#7A1F1F] mb-4 uppercase tracking-tighter">
+            Who's Invited?
           </h2>
-          <div className="w-24 h-1 bg-[#D4A017] mx-auto mb-6"></div>
-          <p className="text-xl text-[#000000] max-w-3xl mx-auto">
-            This fest brings together diverse stakeholders in the entrepreneurship ecosystem
-          </p>
+          <div className="w-32 h-2 bg-[#D4A017] mx-auto rounded-full mb-6"></div>
+          <p className="text-xl text-gray-400 font-black uppercase tracking-widest italic leading-none">The ecosystem is waiting for you</p>
         </div>
 
-        <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8">
           {stakeholders.map((stakeholder, index) => (
             <div
               key={index}
-              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-center border-4 border-[#D9B68C] hover:border-[#D4A017]"
+              className="p-10 rounded-[2.5rem] bg-[#F7E7C6]/20 border-2 border-[#7A1F1F]/5 hover:bg-white hover:shadow-3xl transition-all duration-500 group text-center"
             >
-              <div className="text-[#7A1F1F] mb-4 flex justify-center">
+              <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center text-[#7A1F1F] mb-8 group-hover:bg-[#7A1F1F] group-hover:text-white transition-all shadow-lg mx-auto transform group-hover:rotate-6">
                 {stakeholder.icon}
               </div>
-              <h3 className="text-lg font-bold text-[#7A1F1F] mb-2">{stakeholder.title}</h3>
-              <p className="text-[#000000] text-sm leading-relaxed">{stakeholder.description}</p>
+              <h3 className="text-xl font-black text-[#7A1F1F] mb-4 uppercase tracking-tight italic leading-tight">
+                {stakeholder.title}
+              </h3>
+              <p className="text-gray-600 font-bold text-sm leading-relaxed">
+                {stakeholder.description}
+              </p>
             </div>
           ))}
         </div>

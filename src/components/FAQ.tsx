@@ -15,7 +15,7 @@ export default function FAQ() {
     },
     {
       question: 'What is the venue for the event?',
-      answer: 'The event will be held at Nalanda Institute of Technology, Bhubaneswar, Odisha on 7th and 8th March 2026.'
+      answer: 'The event will be held at Nalanda Institute of Technology, Bhubaneswar, Odisha on 22nd and 23rd March 2026.'
     },
     {
       question: 'Can I participate in multiple events?',
@@ -40,36 +40,37 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="py-20 bg-[#F7E7C6]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#7A1F1F] mb-4">
-            Frequently Asked Questions
+    <section id="faq" className="py-24 bg-[#F7E7C6] relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#7A1F1F]/5 rounded-full blur-3xl -mr-48 -mt-48"></div>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-black text-[#7A1F1F] mb-4 uppercase tracking-tighter">
+            Common Queries
           </h2>
-          <div className="w-24 h-1 bg-[#D4A017] mx-auto mb-6"></div>
+          <div className="w-32 h-2 bg-[#D4A017] mx-auto rounded-full mb-6"></div>
+          <p className="text-xl text-[#000000]/60 font-bold uppercase tracking-widest italic">Everything you need to know</p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-lg border-2 border-[#D9B68C] overflow-hidden hover:border-[#7A1F1F] transition-colors"
+              className="glass-card rounded-[2rem] border-2 border-[#7A1F1F]/5 overflow-hidden transition-all duration-300 hover:border-[#7A1F1F]/20"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between p-6 text-left"
+                className="w-full flex items-center justify-between p-8 text-left"
               >
-                <span className="font-bold text-[#7A1F1F] text-lg pr-4">{faq.question}</span>
-                <ChevronDown
-                  className={`text-[#D4A017] flex-shrink-0 transition-transform duration-300 ${
-                    openIndex === index ? 'rotate-180' : ''
-                  }`}
-                  size={24}
-                />
+                <span className="font-black text-[#7A1F1F] text-xl tracking-tight uppercase italic">{faq.question}</span>
+                <div className={`p-2 rounded-full transition-all duration-300 ${openIndex === index ? 'bg-[#7A1F1F] text-[#F7E7C6] rotate-180' : 'bg-[#D4A017]/10 text-[#7A1F1F]'}`}>
+                  <ChevronDown size={28} />
+                </div>
               </button>
               {openIndex === index && (
-                <div className="px-6 pb-6">
-                  <p className="text-[#000000] leading-relaxed">{faq.answer}</p>
+                <div className="px-8 pb-8 animate-fadeIn">
+                  <div className="w-full h-px bg-gray-100 mb-6"></div>
+                  <p className="text-xl text-gray-700 font-bold leading-relaxed">{faq.answer}</p>
                 </div>
               )}
             </div>

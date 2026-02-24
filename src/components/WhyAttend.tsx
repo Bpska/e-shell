@@ -30,15 +30,17 @@ export default function WhyAttend() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-[#D9B68C] to-[#F7E7C6]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#7A1F1F] mb-4">
+    <section id="why-attend" className="py-24 bg-white relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-[#F7E7C6] to-transparent"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-black text-[#7A1F1F] mb-4 uppercase tracking-tighter">
             Why Attend?
           </h2>
-          <div className="w-24 h-1 bg-[#D4A017] mx-auto mb-6"></div>
-          <p className="text-xl text-[#000000] max-w-3xl mx-auto">
-            Join us for an unforgettable experience that blends culture, innovation, and entrepreneurship
+          <div className="w-32 h-2 bg-[#D4A017] mx-auto rounded-full mb-6"></div>
+          <p className="text-xl text-gray-400 font-black uppercase tracking-widest italic leading-none">
+            Experience the Extraordinary
           </p>
         </div>
 
@@ -46,13 +48,17 @@ export default function WhyAttend() {
           {reasons.map((reason, index) => (
             <div
               key={index}
-              className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-[#D4A017] group"
+              className="p-10 rounded-[2.5rem] bg-[#F7E7C6]/20 border-2 border-[#7A1F1F]/5 hover:bg-white hover:shadow-3xl transition-all duration-500 group"
             >
-              <div className="text-[#7A1F1F] mb-4 group-hover:text-[#D4A017] transition-colors">
+              <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center text-[#7A1F1F] mb-10 group-hover:bg-[#7A1F1F] group-hover:text-white transition-all shadow-lg transform group-hover:scale-110">
                 {reason.icon}
               </div>
-              <h3 className="text-2xl font-bold text-[#7A1F1F] mb-3">{reason.title}</h3>
-              <p className="text-[#000000] leading-relaxed">{reason.description}</p>
+              <h3 className="text-2xl font-black text-[#7A1F1F] mb-4 uppercase tracking-tight italic leading-tight">
+                {reason.title}
+              </h3>
+              <p className="text-gray-600 font-bold leading-relaxed">
+                {reason.description}
+              </p>
             </div>
           ))}
         </div>

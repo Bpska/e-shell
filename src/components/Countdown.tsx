@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Clock } from 'lucide-react';
 
 export default function Countdown() {
-  const targetDate = new Date('2026-03-07T09:00:00').getTime();
+  const targetDate = new Date('2026-03-22T09:00:00').getTime();
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -33,18 +33,20 @@ export default function Countdown() {
   }, [targetDate]);
 
   return (
-    <section className="py-16 bg-gradient-to-r from-[#7A1F1F] via-[#D4A017] to-[#7A1F1F]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Clock className="text-white" size={32} />
-            <h3 className="text-3xl md:text-4xl font-bold text-white">
+    <section className="py-24 bg-[#D4A017] relative overflow-hidden">
+      <div className="absolute inset-0 bg-[#7A1F1F]/5 pointer-events-none"></div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center justify-center gap-3 mb-4 px-6 py-2 bg-[#7A1F1F] text-white rounded-full shadow-lg">
+            <Clock size={24} className="animate-pulse" />
+            <h3 className="text-2xl font-black uppercase tracking-widest italic">
               Event Starts In
             </h3>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
           {[
             { label: 'Days', value: timeLeft.days },
             { label: 'Hours', value: timeLeft.hours },
@@ -53,12 +55,12 @@ export default function Countdown() {
           ].map((item, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-2xl p-6 md:p-8 border-4 border-[#F7E7C6] transform hover:scale-105 transition-transform"
+              className="bg-white rounded-3xl shadow-2xl p-8 border-4 border-white transform transition-all hover:scale-105 active:scale-95 group"
             >
-              <div className="text-4xl md:text-6xl font-bold text-[#7A1F1F] mb-2">
+              <div className="text-5xl md:text-7xl font-black text-[#7A1F1F] mb-2 tracking-tighter italic group-hover:text-[#D4A017] transition-colors">
                 {String(item.value).padStart(2, '0')}
               </div>
-              <div className="text-[#D4A017] font-semibold text-lg md:text-xl uppercase">
+              <div className="text-gray-400 font-black text-xs md:text-sm uppercase tracking-[0.3em]">
                 {item.label}
               </div>
             </div>
