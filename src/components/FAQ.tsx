@@ -60,9 +60,9 @@ export default function FAQ() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between p-8 text-left"
+                className="w-full flex items-center justify-between p-5 sm:p-8 text-left"
               >
-                <span className="font-black text-[#7A1F1F] text-xl tracking-tight uppercase italic">{faq.question}</span>
+                <span className="font-black text-[#7A1F1F] text-base sm:text-xl tracking-tight uppercase italic pr-4">{faq.question}</span>
                 <div className={`p-2 rounded-full transition-all duration-300 ${openIndex === index ? 'bg-[#7A1F1F] text-[#F7E7C6] rotate-180' : 'bg-[#D4A017]/10 text-[#7A1F1F]'}`}>
                   <ChevronDown size={28} />
                 </div>
@@ -70,7 +70,7 @@ export default function FAQ() {
               {openIndex === index && (
                 <div className="px-8 pb-8 animate-fadeIn">
                   <div className="w-full h-px bg-gray-100 mb-6"></div>
-                  <p className="text-xl text-gray-700 font-bold leading-relaxed">{faq.answer}</p>
+                  <p className="text-base sm:text-xl text-gray-700 font-bold leading-relaxed">{faq.answer}</p>
                 </div>
               )}
             </div>

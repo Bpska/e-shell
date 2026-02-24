@@ -67,13 +67,13 @@ export default function Impact() {
           <p className="text-2xl md:text-3xl font-black text-[#F7E7C6] opacity-80 uppercase tracking-widest italic">Changing the Game</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-24">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-12 mb-24">
           {impacts.map((impact, index) => (
             <div key={index} className="text-center group">
               <div className="w-24 h-24 bg-white/10 rounded-3xl flex items-center justify-center text-[#D4A017] mx-auto mb-8 group-hover:bg-[#D4A017] group-hover:text-[#7A1F1F] transition-all shadow-2xl rotate-3">
                 {impact.icon}
               </div>
-              <div className="text-6xl font-black mb-2 tracking-tighter italic">
+              <div className="text-4xl sm:text-6xl font-black mb-2 tracking-tighter italic">
                 <AnimatedNumber target={impact.number} />
                 {impact.suffix}
               </div>
@@ -85,7 +85,7 @@ export default function Impact() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
-          <div className="bg-white/5 backdrop-blur-3xl rounded-[3rem] p-10 border border-white/10 hover:bg-white/10 transition-all duration-500 group">
+          <div className="bg-white/5 backdrop-blur-3xl rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 border border-white/10 hover:bg-white/10 transition-all duration-500 group">
             <h3 className="text-3xl font-black text-[#D4A017] mb-8 uppercase tracking-tight italic">Ecosystem Growth</h3>
             <div className="space-y-6">
               {[
@@ -101,7 +101,7 @@ export default function Impact() {
               ))}
             </div>
           </div>
-          <div className="bg-white/5 backdrop-blur-3xl rounded-[3rem] p-10 border border-white/10 hover:bg-white/10 transition-all duration-500 group">
+          <div className="bg-white/5 backdrop-blur-3xl rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 border border-white/10 hover:bg-white/10 transition-all duration-500 group">
             <h3 className="text-3xl font-black text-[#D4A017] mb-8 uppercase tracking-tight italic">Social Impact</h3>
             <div className="space-y-6">
               {[

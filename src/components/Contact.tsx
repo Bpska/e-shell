@@ -38,7 +38,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-black text-[#F7E7C6] mb-1 uppercase text-sm tracking-widest">Email</h4>
-                    <p className="text-xl font-bold">utkalpreneurefest2k26@gmail.com</p>
+                    <p className="text-base sm:text-xl font-bold break-all">utkalpreneurefest2k26@gmail.com</p>
                     <p className="text-white/60">ecell@nalanda.ac.in</p>
                   </div>
                 </div>
@@ -69,7 +69,7 @@ export default function Contact() {
 
           <div className="bg-white/5 backdrop-blur-3xl rounded-[3rem] p-4 shadow-3xl border border-white/10 relative group">
             <div className="absolute inset-0 bg-[#D4A017]/5 rounded-[3rem] group-hover:bg-[#D4A017]/10 transition-colors"></div>
-            <div className="bg-black/20 h-full min-h-[400px] rounded-[2.5rem] flex items-center justify-center p-12 border border-white/5 relative z-10">
+            <div className="bg-black/20 h-full min-h-[300px] sm:min-h-[400px] rounded-[2.5rem] flex items-center justify-center p-8 sm:p-12 border border-white/5 relative z-10">
               <div className="text-center">
                 <div className="w-24 h-24 bg-[#D4A017] rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl rotate-12">
                   <MapPin size={48} className="text-[#7A1F1F]" />

@@ -1,4 +1,9 @@
 import { Code, Presentation, Store, Users, TrendingUp, MessageCircle, Award } from 'lucide-react';
+import img1 from '../image/1.png';
+import img2 from '../image/2.png';
+import img3 from '../image/3.png';
+import img4 from '../image/4.png';
+import img5 from '../image/5.png';
 
 export default function Events() {
   const events = [
@@ -6,47 +11,49 @@ export default function Events() {
       icon: <Code size={40} />,
       title: 'Innovation Hackathon',
       duration: '24-hour',
-      image: '/src/image/1.png',
+      image: img1,
       description: 'Build solutions that blend technology with Odisha\'s cultural heritage. Teams compete to create impactful innovations.'
     },
     {
       icon: <Presentation size={40} />,
       title: 'Startup Pitch Competition',
       duration: 'Full Day',
-      image: '/src/image/2.png',
+      image: img2,
       description: 'Present your startup idea to investors and industry experts. Win funding and mentorship opportunities.'
     },
     {
       icon: <Store size={40} />,
       title: 'Heritage & Handloom Showcase',
       duration: 'Both Days',
-      image: '/src/image/3.png',
+      image: img3,
       description: 'Explore traditional crafts and artisan products. Connect heritage with modern markets.'
     },
     {
       icon: <Users size={40} />,
       title: 'Networking Evenings',
       duration: 'Evening',
-      image: '/src/image/4.png',
+      image: img4,
       description: 'Connect with entrepreneurs, investors, mentors, and fellow innovators in an informal setting.'
     },
     {
       icon: <TrendingUp size={40} />,
       title: 'Mock Shark Tank',
       duration: 'Day 2',
-      image: '/src/image/5.png',
+      image: img5,
       description: 'Experience the thrill of pitching to a panel of successful entrepreneurs and investors.'
     },
     {
       icon: <MessageCircle size={40} />,
       title: 'Mentor Interactions',
       duration: 'Both Days',
+      image: img3,
       description: 'One-on-one sessions with industry veterans and successful founders to guide your journey.'
     },
     {
       icon: <Award size={40} />,
       title: 'Cultural + Startup Exhibition',
       duration: 'Both Days',
+      image: img4,
       description: 'A unique exhibition showcasing the intersection of tradition and innovation.'
     }
   ];

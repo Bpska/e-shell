@@ -36,7 +36,7 @@ export default function Schedule() {
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Day 1 */}
-          <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/10 shadow-2xl">
+          <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-4 sm:p-8 border border-white/10 shadow-2xl">
             <div className="flex items-center gap-4 mb-10">
               <div className="w-16 h-16 bg-[#D4A017] rounded-2xl flex items-center justify-center rotate-3 shadow-lg">
                 <span className="text-[#7A1F1F] font-black text-3xl">01</span>
@@ -48,14 +48,14 @@ export default function Schedule() {
             </div>
             <div className="space-y-6">
               {schedule.day1.map((item, index) => (
-                <div key={index} className="flex gap-6 p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-all group">
-                  <div className="flex items-center gap-2 text-[#D4A017] font-bold min-w-[100px]">
-                    <Clock size={18} className="group-hover:scale-110 transition-transform" />
+                <div key={index} className="flex flex-col sm:flex-row gap-2 sm:gap-6 p-4 sm:p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-all group">
+                  <div className="flex items-center gap-2 text-[#D4A017] font-bold sm:min-w-[100px]">
+                    <Clock size={18} className="group-hover:scale-110 transition-transform flex-shrink-0" />
                     <span className="text-sm">{item.time}</span>
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-bold text-white text-lg mb-1 group-hover:text-[#D4A017] transition-colors">{item.event}</h4>
-                    <p className="text-sm text-[#F7E7C6] opacity-70">{item.description}</p>
+                    <h4 className="font-bold text-white text-base sm:text-lg mb-1 group-hover:text-[#D4A017] transition-colors">{item.event}</h4>
+                    <p className="text-xs sm:text-sm text-[#F7E7C6] opacity-70">{item.description}</p>
                   </div>
                 </div>
               ))}
@@ -63,7 +63,7 @@ export default function Schedule() {
           </div>
 
           {/* Day 2 */}
-          <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/10 shadow-2xl">
+          <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-4 sm:p-8 border border-white/10 shadow-2xl">
             <div className="flex items-center gap-4 mb-10">
               <div className="w-16 h-16 bg-[#F7E7C6] rounded-2xl flex items-center justify-center -rotate-3 shadow-lg">
                 <span className="text-[#7A1F1F] font-black text-3xl">02</span>
@@ -75,14 +75,14 @@ export default function Schedule() {
             </div>
             <div className="space-y-6">
               {schedule.day2.map((item, index) => (
-                <div key={index} className="flex gap-6 p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-all group">
-                  <div className="flex items-center gap-2 text-[#F7E7C6] font-bold min-w-[100px]">
-                    <Clock size={18} className="group-hover:scale-110 transition-transform" />
+                <div key={index} className="flex flex-col sm:flex-row gap-2 sm:gap-6 p-4 sm:p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-all group">
+                  <div className="flex items-center gap-2 text-[#F7E7C6] font-bold sm:min-w-[100px]">
+                    <Clock size={18} className="group-hover:scale-110 transition-transform flex-shrink-0" />
                     <span className="text-sm">{item.time}</span>
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-bold text-white text-lg mb-1 group-hover:text-[#F7E7C6] transition-colors">{item.event}</h4>
-                    <p className="text-sm text-[#D4A017] opacity-70">{item.description}</p>
+                    <h4 className="font-bold text-white text-base sm:text-lg mb-1 group-hover:text-[#F7E7C6] transition-colors">{item.event}</h4>
+                    <p className="text-xs sm:text-sm text-[#D4A017] opacity-70">{item.description}</p>
                   </div>
                 </div>
               ))}

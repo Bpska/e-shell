@@ -7,7 +7,7 @@ export default function VisionMission() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid md:grid-cols-2 gap-16">
-          <div className="glass-card rounded-[3rem] p-12 border-2 border-[#7A1F1F]/10 hover:shadow-3xl transition-all duration-500 group">
+          <div className="glass-card rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-12 border-2 border-[#7A1F1F]/10 hover:shadow-3xl transition-all duration-500 group">
             <div className="flex items-center gap-6 mb-10">
               <div className="w-20 h-20 bg-[#7A1F1F]/10 rounded-3xl flex items-center justify-center text-[#7A1F1F] group-hover:bg-[#7A1F1F] group-hover:text-white transition-all transform rotate-3">
                 <Eye size={40} />
@@ -19,7 +19,7 @@ export default function VisionMission() {
             </p>
           </div>
 
-          <div className="glass-card rounded-[3rem] p-12 border-2 border-[#D4A017]/20 hover:shadow-3xl transition-all duration-500 group scale-105 bg-white">
+          <div className="glass-card rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-12 border-2 border-[#D4A017]/20 hover:shadow-3xl transition-all duration-500 group md:scale-105 bg-white">
             <div className="flex items-center gap-6 mb-10">
               <div className="w-20 h-20 bg-[#D4A017]/10 rounded-3xl flex items-center justify-center text-[#D4A017] group-hover:bg-[#D4A017] group-hover:text-white transition-all transform -rotate-3">
                 <Target size={40} />

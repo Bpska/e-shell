@@ -42,16 +42,16 @@ export default function Stakeholders() {
           <p className="text-xl text-gray-400 font-black uppercase tracking-widest italic leading-none">The ecosystem is waiting for you</p>
         </div>
 
-        <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-8">
           {stakeholders.map((stakeholder, index) => (
             <div
               key={index}
-              className="p-10 rounded-[2.5rem] bg-[#F7E7C6]/20 border-2 border-[#7A1F1F]/5 hover:bg-white hover:shadow-3xl transition-all duration-500 group text-center"
+              className="p-6 sm:p-10 rounded-[1.5rem] sm:rounded-[2.5rem] bg-[#F7E7C6]/20 border-2 border-[#7A1F1F]/5 hover:bg-white hover:shadow-3xl transition-all duration-500 group text-center"
             >
               <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center text-[#7A1F1F] mb-8 group-hover:bg-[#7A1F1F] group-hover:text-white transition-all shadow-lg mx-auto transform group-hover:rotate-6">
                 {stakeholder.icon}
               </div>
-              <h3 className="text-xl font-black text-[#7A1F1F] mb-4 uppercase tracking-tight italic leading-tight">
+              <h3 className="text-base sm:text-xl font-black text-[#7A1F1F] mb-4 uppercase tracking-tight italic leading-tight">
                 {stakeholder.title}
               </h3>
               <p className="text-gray-600 font-bold text-sm leading-relaxed">

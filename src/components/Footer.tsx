@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#D4A017] to-transparent"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-16 mb-20">
           <div className="space-y-8">
             <div className="flex items-center space-x-3">
               <img src="/logo.png" alt="UTKALPRENEUR E-FEST 2026" className="h-24 w-auto grayscale brightness-200" />
@@ -50,7 +50,7 @@ export default function Footer() {
                 <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center group-hover:bg-[#D4A017] group-hover:text-[#7A1F1F] transition-all">
                   <Mail size={18} />
                 </div>
-                <span className="text-white/60 font-medium text-sm transition-colors group-hover:text-white">utkalpreneurefest2k26@gmail.com</span>
+                <span className="text-white/60 font-medium text-xs sm:text-sm transition-colors group-hover:text-white break-all">utkalpreneurefest2k26@gmail.com</span>
               </li>
               <li className="flex items-center gap-4 group cursor-pointer">
                 <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center group-hover:bg-[#D4A017] group-hover:text-[#7A1F1F] transition-all">

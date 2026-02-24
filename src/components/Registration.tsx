@@ -61,16 +61,16 @@ export default function Registration() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-black text-[#7A1F1F] mb-4 uppercase tracking-tighter italic">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-[#7A1F1F] mb-4 uppercase tracking-tighter italic">
             {step === 'payment' ? 'Complete Payment' : step === 'success' ? 'Confirmed!' : 'Register Now'}
           </h2>
           <div className="w-32 h-2 bg-[#D4A017] mx-auto rounded-full mb-6"></div>
-          <p className="text-xl text-gray-400 font-bold uppercase tracking-widest italic leading-none">
+          <p className="text-base sm:text-xl text-gray-400 font-bold uppercase tracking-widest italic leading-none">
             {step === 'payment' ? 'Secure your spot for the E-Fest' : 'Join us for UTKALPRENEUR E-FEST 2026'}
           </p>
         </div>
 
-        <div className="glass-card rounded-[3rem] p-8 md:p-12 border-2 border-[#7A1F1F]/5 shadow-2xl relative bg-white">
+        <div className="glass-card rounded-[2rem] sm:rounded-[3rem] p-5 sm:p-8 md:p-12 border-2 border-[#7A1F1F]/5 shadow-2xl relative bg-white">
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#D4A017]/5 rounded-full blur-3xl -mr-16 -mt-16"></div>
 
           {step === 'success' ? (
@@ -78,8 +78,8 @@ export default function Registration() {
               <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner rotate-12">
                 <CheckCircle className="text-green-500" size={64} />
               </div>
-              <h3 className="text-4xl font-black text-[#7A1F1F] mb-4 tracking-tighter uppercase italic">Registration Successful!</h3>
-              <p className="text-xl text-gray-600 font-bold mb-10 leading-tight">Thank you, {formData.full_name}! We've received your registration for {formData.event_type}.</p>
+              <h3 className="text-2xl sm:text-4xl font-black text-[#7A1F1F] mb-4 tracking-tighter uppercase italic">Registration Successful!</h3>
+              <p className="text-base sm:text-xl text-gray-600 font-bold mb-10 leading-tight">Thank you, {formData.full_name}! We've received your registration for {formData.event_type}.</p>
               <button
                 onClick={() => {
                   setStep('form');
@@ -92,7 +92,7 @@ export default function Registration() {
                     event_type: ''
                   });
                 }}
-                className="premium-button px-12 py-6 bg-[#7A1F1F] text-[#F7E7C6] rounded-2xl font-black text-2xl border-b-8 border-[#5A1515]"
+                className="premium-button px-8 sm:px-12 py-4 sm:py-6 bg-[#7A1F1F] text-[#F7E7C6] rounded-2xl font-black text-lg sm:text-2xl border-b-8 border-[#5A1515]"
               >
                 BACK TO HOME
               </button>
