@@ -1,0 +1,290 @@
+# 🚀 UTKALPRENEUR E-FEST — VPS Deployment Guide
+
+Complete step-by-step guide to deploy the project on a VPS using Docker.
+
+---
+
+## 📁 Project Structure
+
+```
+e-shell/
+├── client/                # React Frontend
+│   ├── src/
+│   ├── public/
+│   ├── Dockerfile         # Multi-stage: build → nginx
+│   ├── nginx.conf         # Reverse proxy config
+│   ├── package.json
+│   ├── vite.config.ts
+│   └── ...
+├── server/                # Express Backend
+│   ├── db/
+│   │   ├── index.js       # DB connection
+│   │   └── init.sql       # Schema
+│   ├── uploads/           # Uploaded files (PPTs, screenshots)
+│   ├── Dockerfile
+│   ├── package.json
+│   └── index.js
+├── docker-compose.yml     # Orchestrates all 3 services
+├── .env.example           # Template for environment variables
+└── .env                   # Your actual config (DO NOT commit)
+```
+
+---
+
+## ✅ Prerequisites
+
+| Tool | Minimum Version |
+|------|----------------|
+| VPS | Ubuntu 22.04+ (any Linux) |
+| Docker | 24+ |
+| Docker Compose | v2+ (bundled with Docker) |
+| Git | Any |
+
+---
+
+## 📋 Step-by-Step Deployment
+
+### Step 1 — Connect to Your VPS
+
+```bash
+ssh root@YOUR_VPS_IP
+```
+
+### Step 2 — Install Docker & Docker Compose
+
+```bash
+# Update system
+sudo apt update && sudo apt upgrade -y
+
+# Install Docker
+curl -fsSL https://get.docker.com | sh
+
+# Verify installation
+docker --version
+docker compose version
+```
+
+### Step 3 — Clone the Repository
+
+```bash
+cd /opt
+git clone https://github.com/YOUR_USERNAME/e-shell.git
+cd e-shell
+```
+
+> If using a private repo, set up an SSH key or use a personal access token.
+
+### Step 4 — Configure Environment Variables
+
+```bash
+cp .env.example .env
+nano .env
+```
+
+Edit the [.env](file:///d:/LogiSaar/e-shell/.env) file:
+
+```env
+# Set a STRONG password for PostgreSQL
+DB_PASSWORD=your_strong_password_123
+
+# Leave these as-is for Docker
+CORS_ORIGIN=
+VITE_API_URL=/api
+```
+
+> [!CAUTION]
+> Never use the default password `bps` in production. Choose a strong, unique password.
+
+### Step 5 — Build & Start All Containers
+
+```bash
+docker compose up -d --build
+```
+
+This will:
+1. 🐘 Start **PostgreSQL** and auto-run [init.sql](file:///d:/LogiSaar/e-shell/server/db/init.sql) to create tables
+2. 🟢 Start the **Express backend** on port 5000
+3. 🌐 Start the **nginx frontend** on port 80
+
+### Step 6 — Verify Everything is Running
+
+```bash
+# Check all 3 containers are running
+docker compose ps
+
+# Check logs if needed
+docker compose logs -f
+```
+
+You should see:
+```
+NAME                STATUS
+e-shell-db-1        Up (healthy)
+e-shell-backend-1   Up
+e-shell-frontend-1  Up
+```
+
+### Step 7 — Visit Your Site
+
+Open your browser and go to:
+
+```
+http://YOUR_VPS_IP
+```
+
+- **Home page** → `http://YOUR_VPS_IP`
+- **Admin panel** → `http://YOUR_VPS_IP/#/admin`
+- **Registration** → `http://YOUR_VPS_IP/#/registration`
+
+---
+
+## 🌐 Setting Up a Domain (Optional but Recommended)
+
+### Step 1 — Point Your Domain
+
+In your domain registrar (GoDaddy, Namecheap, Cloudflare, etc.), add an **A record**:
+
+| Type | Name | Value |
+|------|------|-------|
+| A | @ | YOUR_VPS_IP |
+| A | www | YOUR_VPS_IP |
+
+### Step 2 — Install Certbot for HTTPS (SSL)
+
+```bash
+# Install Certbot
+sudo apt install certbot python3-certbot-nginx -y
+
+# Stop the frontend container temporarily
+docker compose stop frontend
+
+# Get SSL certificate
+sudo certbot certonly --standalone -d yourdomain.com -d www.yourdomain.com
+
+# Restart frontend
+docker compose start frontend
+```
+
+### Step 3 — Update nginx for HTTPS
+
+Create a new nginx config at `client/nginx-ssl.conf`:
+
+```nginx
+server {
+    listen 80;
+    server_name yourdomain.com www.yourdomain.com;
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name yourdomain.com www.yourdomain.com;
+
+    ssl_certificate     /etc/letsencrypt/live/yourdomain.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/yourdomain.com/privkey.pem;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location /api/ {
+        proxy_pass http://backend:5000/api/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        client_max_body_size 10M;
+    }
+
+    location /uploads/ {
+        proxy_pass http://backend:5000/uploads/;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+```
+
+Then mount the SSL certs in [docker-compose.yml](file:///d:/LogiSaar/e-shell/docker-compose.yml) under the frontend service:
+
+```yaml
+frontend:
+  ...
+  volumes:
+    - /etc/letsencrypt:/etc/letsencrypt:ro
+  ports:
+    - "80:80"
+    - "443:443"
+```
+
+Rebuild: `docker compose up -d --build`
+
+---
+
+## 🔧 Common Commands
+
+| Command | Description |
+|---------|-------------|
+| `docker compose up -d --build` | Build & start all containers |
+| `docker compose down` | Stop all containers |
+| `docker compose logs -f` | View live logs |
+| `docker compose logs backend` | View backend logs only |
+| `docker compose restart backend` | Restart backend only |
+| `docker compose exec db psql -U postgres -d eshell` | Access PostgreSQL CLI |
+| `docker compose down -v` | ⚠️ Stop & **delete all data** |
+
+---
+
+## 🗄️ Database Management
+
+### Access the Database
+
+```bash
+docker compose exec db psql -U postgres -d eshell
+```
+
+### Backup the Database
+
+```bash
+docker compose exec db pg_dump -U postgres eshell > backup_$(date +%Y%m%d).sql
+```
+
+### Restore from Backup
+
+```bash
+cat backup_20260225.sql | docker compose exec -T db psql -U postgres -d eshell
+```
+
+---
+
+## 📦 Updating the Application
+
+```bash
+cd /opt/e-shell
+
+# Pull latest code
+git pull origin main
+
+# Rebuild and restart
+docker compose up -d --build
+```
+
+---
+
+## ⚠️ Troubleshooting
+
+| Problem | Solution |
+|---------|----------|
+| **Port 80 already in use** | Stop any running web servers: `sudo systemctl stop nginx apache2` |
+| **Database connection refused** | Wait for the health check: `docker compose logs db` |
+| **Uploads not persisting** | Ensure the `uploads` volume is defined in docker-compose.yml |
+| **502 Bad Gateway** | Backend container may have crashed: `docker compose logs backend` |
+| **CORS errors** | Check `CORS_ORIGIN` in [.env](file:///d:/LogiSaar/e-shell/.env) or leave empty for nginx proxy mode |
+
+---
+
+## 🔒 Security Checklist
+
+- [x] Change default DB password in [.env](file:///d:/LogiSaar/e-shell/.env)
+- [ ] Set up SSL with Certbot
+- [ ] Configure firewall: `sudo ufw allow 22,80,443/tcp && sudo ufw enable`
+- [ ] Set up automatic SSL renewal: `sudo certbot renew --dry-run`
+- [ ] Set up automated backups via cron job
