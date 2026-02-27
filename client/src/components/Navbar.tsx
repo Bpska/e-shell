@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
-import logo from '../image/logo.jpeg';
+import logo from '../image/logo.png';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

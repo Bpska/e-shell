@@ -1,4 +1,5 @@
 import { MapPin, ArrowRight } from 'lucide-react';
+import heroImage from '../image/hero.png';
 
 export default function Hero() {
   const scrollToSection = (id: string) => {
@@ -16,12 +17,19 @@ export default function Hero() {
         <div className="absolute top-1/2 left-1/4 w-48 h-48 border-4 border-[#D4A017]/10 rotate-45 animate-spin-slow" style={{ animationDuration: '20s' }}></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-        <div className="animate-fadeIn">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center">
+        <div className="animate-fadeIn w-full">
           <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-extrabold text-[#7A1F1F] mb-6 tracking-tighter uppercase leading-none italic">
             UTKALPRENEUR
             <span className="block text-[#D4A017] not-italic">E-FEST 2026</span>
           </h1>
+          <div className="flex justify-center mb-8 sm:mb-12">
+            <img
+              src={heroImage}
+              alt="UTKALPRENEUR E-FEST 2026 Hero"
+              className="w-full max-w-4xl lg:max-w-5xl mx-auto object-contain drop-shadow-2xl"
+            />
+          </div>
 
           <div className="mb-12 space-y-4 animate-slideInUp" style={{ animationDelay: '0.2s' }}>
             <p className="text-lg sm:text-2xl md:text-4xl text-[#000000] font-bold tracking-tight">

@@ -1,5 +1,5 @@
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
-import logo from '../image/logo.jpeg';
+import logo from '../image/logo.png';
 
 export default function Footer() {
   const navigateTo = (hash: string) => {
