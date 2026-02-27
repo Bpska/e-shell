@@ -15,7 +15,7 @@ export default function VisionMission() {
               <h3 className="text-4xl font-black text-[#7A1F1F] uppercase tracking-tighter italic">Our Vision</h3>
             </div>
             <p className="text-xl text-gray-700 font-bold leading-relaxed">
-              To establish <span className="text-[#7A1F1F]">Odisha</span> as a hub of culturally rooted entrepreneurship, where innovation is inspired by heritage.
+              To establish <span className="text-[#7A1F1F]">Odisha</span> as a hub of culturally rooted entrepreneurship, where tradition fuels innovation and yields sustainable local economic growth.
             </p>
           </div>
 
@@ -28,9 +28,9 @@ export default function VisionMission() {
             </div>
             <div className="space-y-6">
               {[
-                "Blend heritage with startup innovation",
-                "Provide learning and networking platforms",
-                "Encourage ethical, inclusive entrepreneurship"
+                "Blend cultural heritage with startup innovation",
+                "Provide platforms for learning, showcasing, and networking",
+                "Encourage ethical, inclusive, and impactful entrepreneurship"
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-4">
                   <div className="w-6 h-6 rounded-full bg-[#D4A017]/20 flex items-center justify-center flex-shrink-0">

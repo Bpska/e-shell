@@ -12,7 +12,7 @@ export default function Events() {
       title: 'Techspaire 1.0',
       duration: 'Day 1 & Day 2',
       image: img1,
-      description: 'A flagship technical event to demonstrate your innovative technical prowess.',
+      description: 'A flagship hackathon challenge — "Nalanda Ignite" — where innovators ideate and prototype tech solutions for real-world problems.',
       registerUrl: '#/registration/techspaire'
     },
     {
@@ -20,7 +20,7 @@ export default function Events() {
       title: 'Local 2 Vocal',
       duration: 'Day 1',
       image: img2,
-      description: 'Highlighting local ideas and taking them to a larger stage.',
+      description: 'The "Odisha Udyami Parv" — an exhibition for student founders, local artisans, and tech-driven solutions celebrating indigenous ideas.',
       registerUrl: '#/registration/local2vocal'
     },
     {
@@ -28,7 +28,7 @@ export default function Events() {
       title: 'Mock Shark Tank',
       duration: 'Day 2',
       image: img5,
-      description: 'Experience the thrill of pitching your ideas to a panel of experts and investors.',
+      description: 'A high-stakes pitch competition where student startups present their business ideas to experienced investors and mentors.',
       registerUrl: '#/registration/sharktank'
     },
     {
@@ -36,7 +36,7 @@ export default function Events() {
       title: 'Idea 2 Impact',
       duration: 'Day 1',
       image: img4,
-      description: 'Transform your raw ideas into impactful solutions for the modern world.',
+      description: 'Lead the startup expo with your groundbreaking prototype and vision — transform raw ideas into impactful solutions.',
       registerUrl: '#/registration/idea2impact'
     },
     {
@@ -44,7 +44,7 @@ export default function Events() {
       title: 'Sponsorship',
       duration: 'Both Days',
       image: img3,
-      description: 'Connect with stakeholders and explore impactful sponsorship opportunities.',
+      description: 'Connect with stakeholders and explore impactful sponsorship opportunities to support entrepreneurship and innovation.',
       registerUrl: '#/sponsorship'
     }
   ];

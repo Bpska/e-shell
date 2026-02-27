@@ -18,10 +18,6 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
         <div className="animate-fadeIn">
-          <div className="inline-block px-4 py-2 bg-[#7A1F1F]/10 rounded-full text-[#7A1F1F] font-bold text-sm mb-6 animate-slideInUp">
-            THE PREMIER ENTREPRENEURSHIP FESTIVAL
-          </div>
-
           <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-extrabold text-[#7A1F1F] mb-6 tracking-tighter uppercase leading-none italic">
             UTKALPRENEUR
             <span className="block text-[#D4A017] not-italic">E-FEST 2026</span>

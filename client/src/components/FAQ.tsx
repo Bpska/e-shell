@@ -15,7 +15,7 @@ export default function FAQ() {
     },
     {
       question: 'What is the venue for the event?',
-      answer: 'The event will be held at Nalanda Institute of Technology, Bhubaneswar, Odisha on 22nd and 23rd March 2026.'
+      answer: 'The event will be held at Nalanda Institute of Technology, Bhubaneswar, Odisha on 21st and 22nd March 2026.'
     },
     {
       question: 'Can I participate in multiple events?',

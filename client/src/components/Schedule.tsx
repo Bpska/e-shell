@@ -4,17 +4,19 @@ export default function Schedule() {
   const schedule = {
     day1: [
       { time: '09:00 AM', event: 'Inauguration Ceremony', description: 'Welcome address and lamp lighting' },
-      { time: '10:30 AM', event: 'Keynote & Leadership Talks', description: 'Industry leaders share their journey' },
-      { time: '12:00 PM', event: 'Hackathon Begins', description: '24-hour innovation challenge kickoff' },
-      { time: '02:00 PM', event: 'Startup & Cultural Exhibition Opens', description: 'Explore startups and heritage crafts' },
+      { time: '09:30 AM', event: 'Keynote & Leadership Talks', description: 'Industry leaders share their journey' },
+      { time: '10:00 AM', event: 'Hackathon Begins', description: 'Innovation challenge kickoff' },
+      { time: '10:30 AM', event: 'Startup & Cultural Exhibition Opens', description: 'Explore startups and heritage crafts' },
+      { time: '01:30 PM', event: 'Lunch', description: 'Break and refreshments' },
       { time: '06:00 PM', event: 'Networking Evening', description: 'Connect with entrepreneurs and investors' }
     ],
     day2: [
-      { time: '10:00 AM', event: 'Hackathon Presentations', description: 'Teams present their solutions' },
-      { time: '12:00 PM', event: 'Mock Shark Tank', description: 'Pitch your ideas to investor panel' },
-      { time: '02:00 PM', event: 'Mentor Interaction Sessions', description: 'One-on-one guidance from experts' },
-      { time: '04:00 PM', event: 'Awards & Felicitation', description: 'Recognizing outstanding participants' },
-      { time: '06:00 PM', event: 'Closing Ceremony', description: 'Vote of thanks and cultural performance' }
+      { time: '10:00 AM', event: 'Hackathon Presentation', description: 'Teams present their solutions' },
+      { time: '11:00 AM', event: 'Mock Shark Tank', description: 'Pitch your ideas to investor panel' },
+      { time: '12:00 PM', event: 'Mentor Interaction', description: 'One-on-one guidance from experts' },
+      { time: '01:30 PM', event: 'Lunch', description: 'Break and refreshments' },
+      { time: '03:30 PM', event: 'Awards & Felicitation', description: 'Recognizing outstanding participants' },
+      { time: '04:00 PM', event: 'Closing Ceremony', description: 'Vote of thanks and cultural performance' }
     ]
   };
 

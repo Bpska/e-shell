@@ -72,8 +72,13 @@ export default function Footer() {
           <div>
             <h4 className="text-[#D4A017] font-black text-xs tracking-[0.4em] uppercase mb-10 italic">Our Pulse</h4>
             <div className="flex gap-4 mb-10">
-              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-                <a key={i} href="#" className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center hover:bg-[#D4A017] hover:text-[#7A1F1F] hover:-translate-y-2 transition-all shadow-xl">
+              {[
+                { Icon: Facebook, href: '#' },
+                { Icon: Twitter, href: '#' },
+                { Icon: Instagram, href: 'https://www.instagram.com/ecellnalanda?igsh=dnpwdHR3NHk0aGJ6' },
+                { Icon: Linkedin, href: '#' },
+              ].map(({ Icon, href }, i) => (
+                <a key={i} href={href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center hover:bg-[#D4A017] hover:text-[#7A1F1F] hover:-translate-y-2 transition-all shadow-xl">
                   <Icon size={20} />
                 </a>
               ))}

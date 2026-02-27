@@ -90,7 +90,7 @@ export default function Impact() {
             <div className="space-y-6">
               {[
                 "Promotion of Odisha's cultural economy and heritage businesses",
-                "Building sustainable entrepreneurship culture on campus"
+                "Building sustainable entrepreneurship culture among students"
               ].map((text, i) => (
                 <div key={i} className="flex items-center gap-4">
                   <div className="w-6 h-6 rounded-full bg-[#D4A017]/20 flex items-center justify-center flex-shrink-0">
@@ -105,8 +105,8 @@ export default function Impact() {
             <h3 className="text-3xl font-black text-[#D4A017] mb-8 uppercase tracking-tight italic">Social Impact</h3>
             <div className="space-y-6">
               {[
-                "Creating employment opportunities through new ventures",
-                "Fostering collaboration between traditional and modern sectors"
+                "Creating awareness of emerging technologies and innovation",
+                "Connecting startups with mentors, investors, and industry leaders"
               ].map((text, i) => (
                 <div key={i} className="flex items-center gap-4">
                   <div className="w-6 h-6 rounded-full bg-[#D4A017]/20 flex items-center justify-center flex-shrink-0">

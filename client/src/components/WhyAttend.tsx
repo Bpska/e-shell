@@ -4,28 +4,28 @@ export default function WhyAttend() {
   const reasons = [
     {
       icon: <Sparkles size={48} />,
-      title: 'Celebrate Entrepreneurship',
-      description: 'Be part of a movement that honors innovation rooted in tradition'
+      title: 'Promote Innovation Culture',
+      description: 'Be part of a movement that cultivates an entrepreneurial mindset rooted in Odisha\'s heritage'
     },
     {
       icon: <Trophy size={48} />,
-      title: 'Unlock Opportunities',
-      description: 'Connect with investors, mentors, and industry leaders'
+      title: 'Connect with Investors & Mentors',
+      description: 'Network with 50+ mentors, investors, and industry leaders who support startups'
     },
     {
       icon: <Lightbulb size={48} />,
-      title: 'Learn & Innovate',
-      description: 'Gain insights from successful entrepreneurs and experts'
+      title: 'Learn from Leaders',
+      description: 'Gain insights from keynote talks and leadership sessions by successful entrepreneurs'
     },
     {
       icon: <Users size={48} />,
-      title: 'Showcase Your Vision',
-      description: 'Present your startup or idea to a diverse audience'
+      title: 'Showcase Your Startup',
+      description: 'Present your ideas at the startup expo alongside 50+ exhibitors and artisans'
     },
     {
       icon: <Zap size={48} />,
-      title: 'Be Inspired',
-      description: 'Experience the fusion of culture and cutting-edge technology'
+      title: 'Experience Culture & Tech',
+      description: 'Enjoy cultural performances, artisan workshops, traditional food stalls, and cutting-edge innovation'
     }
   ];
 

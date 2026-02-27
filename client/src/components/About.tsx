@@ -15,11 +15,11 @@ export default function About() {
 
           <div className="relative z-10 space-y-8">
             <p className="text-2xl md:text-3xl text-[#000000] leading-tight font-bold">
-              <span className="text-[#7A1F1F]">Utkalpreneur E-Fest</span> is a two-day celebration of entrepreneurship, innovation, and cultural identity.
+              <span className="text-[#7A1F1F]">Utkalpreneur E-Fest</span> is a flagship two-day entrepreneurship festival organized by the Entrepreneurship Cell (UEC & E-Cell Nalanda) of Nalanda Institute of Technology, Bhubaneswar.
             </p>
 
             <p className="text-xl sm:text-lg md:text-xl text-gray-700 leading-relaxed max-w-4xl font-medium">
-              This fest is more than just an event—it's a movement to blend the rich heritage of Odisha with the dynamic spirit of modern entrepreneurship. We believe that true innovation is rooted in tradition, and that the future of business lies in honoring our past while building boldly for tomorrow.
+              This fest is more than just an event—it's a movement to blend the rich cultural heritage of Odisha with the dynamic spirit of modern entrepreneurship. We believe that true innovation is rooted in tradition, and that the future of business lies in honoring our past while building boldly for tomorrow. Experience startup expos, hackathons, leadership talks, cultural exhibitions, and more!
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">

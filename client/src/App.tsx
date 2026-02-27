@@ -8,6 +8,7 @@ import WhyAttend from './components/WhyAttend';
 import Events from './components/Events';
 import Countdown from './components/Countdown';
 import Schedule from './components/Schedule';
+import HackathonRules from './components/HackathonRules';
 import Stakeholders from './components/Stakeholders';
 import Impact from './components/Impact';
 import Sponsorship from './components/Sponsorship';
@@ -64,6 +65,7 @@ function App() {
         <Navbar />
         <main className="flex-1">
           <Registration eventName={eventName} />
+          <HackathonRules />
         </main>
         <Footer />
       </div>
