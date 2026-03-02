@@ -69,14 +69,15 @@ export default function Contact() {
 
           <div className="bg-white/5 backdrop-blur-3xl rounded-[3rem] p-4 shadow-3xl border border-white/10 relative group">
             <div className="absolute inset-0 bg-[#D4A017]/5 rounded-[3rem] group-hover:bg-[#D4A017]/10 transition-colors"></div>
-            <div className="bg-black/20 h-full min-h-[300px] sm:min-h-[400px] rounded-[2.5rem] flex items-center justify-center p-8 sm:p-12 border border-white/5 relative z-10">
-              <div className="text-center">
-                <div className="w-24 h-24 bg-[#D4A017] rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl rotate-12">
-                  <MapPin size={48} className="text-[#7A1F1F]" />
-                </div>
-                <h4 className="text-2xl font-black text-[#D4A017] mb-2">FIND US</h4>
-                <p className="text-[#F7E7C6] opacity-60 font-medium">Bhubaneswar, Odisha</p>
-              </div>
+            <div className="bg-black/20 h-full min-h-[300px] sm:min-h-[400px] rounded-[2.5rem] flex items-center justify-center p-2 border border-white/5 relative z-10 overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.783301531729!2d85.75926857523866!3d20.365902981122638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19060462635441%3A0x2697f0bcc78c2240!2sNalanda%20Institute%20of%20Technology%20%5BNIT%5D%2C%20Bhubaneswar!5e1!3m2!1sen!2sin!4v1772442752672!5m2!1sen!2sin"
+                className="w-full h-full min-h-[300px] sm:min-h-[400px] rounded-[2rem]"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
         </div>

@@ -19,7 +19,7 @@ export default function FAQ() {
     },
     {
       question: 'Can I participate in multiple events?',
-      answer: 'Yes! You can register for multiple events or get a Full Fest Pass to access all activities, workshops, and networking sessions.'
+      answer: 'No, you cannot join multiple events.'
     },
     {
       question: 'Are accommodation facilities available?',

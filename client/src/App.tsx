@@ -6,6 +6,7 @@ import Theme from './components/Theme';
 import VisionMission from './components/VisionMission';
 import WhyAttend from './components/WhyAttend';
 import Events from './components/Events';
+import Prizes from './components/Prizes';
 import Countdown from './components/Countdown';
 import Schedule from './components/Schedule';
 import HackathonRules from './components/HackathonRules';
@@ -83,6 +84,7 @@ function App() {
         <VisionMission />
         <WhyAttend />
         <Events />
+        <Prizes />
         <Schedule />
         <Stakeholders />
         <Impact />

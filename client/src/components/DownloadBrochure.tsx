@@ -1,10 +1,7 @@
 import { Download } from 'lucide-react';
+import brochureImg from '../image/WhatsApp Image 2026-02-28 at 3.15.31 PM.jpeg';
 
 export default function DownloadBrochure() {
-  const handleDownload = () => {
-    alert('Brochure will be available soon!');
-  };
-
   return (
     <section className="py-24 bg-[#7A1F1F] text-white relative overflow-hidden">
       <div className="absolute inset-0 bg-[#D4A017]/10 pointer-events-none"></div>
@@ -18,12 +15,13 @@ export default function DownloadBrochure() {
           <p className="text-base sm:text-2xl text-[#F7E7C6] font-bold mb-12 opacity-80 max-w-2xl mx-auto leading-tight italic uppercase tracking-widest">
             Download our complete 2026 brochure for full event insights.
           </p>
-          <button
-            onClick={handleDownload}
-            className="premium-button px-8 sm:px-12 py-4 sm:py-6 bg-[#D4A017] text-[#7A1F1F] rounded-3xl font-black text-lg sm:text-2xl border-b-8 border-[#B8860B]"
+          <a
+            href={brochureImg}
+            download="Utkalpreneur_E-Fest_2026_Brochure.jpeg"
+            className="premium-button inline-block px-8 sm:px-12 py-4 sm:py-6 bg-[#D4A017] text-[#7A1F1F] rounded-3xl font-black text-lg sm:text-2xl border-b-8 border-[#B8860B] hover:scale-105 transition-transform"
           >
-            BROCHURE AVAILABLE SOON
-          </button>
+            DOWNLOAD BROCHURE
+          </a>
         </div>
       </div>
     </section>

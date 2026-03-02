@@ -4,9 +4,10 @@ import img3 from '../image/image copy 2.png';
 import img4 from '../image/image copy 3.png';
 import img5 from '../image/image copy 4.png';
 import img6 from '../image/image copy 5.png';
+import img7 from '../image/WhatsApp Image 2026-02-27 at 9.29.50 PM.jpeg';
 
 export default function Gallery() {
-  const images = [img1, img2, img3, img4, img5, img6];
+  const images = [img1, img2, img3, img4, img5, img6, img7];
 
   return (
     <section id="gallery" className="py-24 bg-white relative overflow-hidden">

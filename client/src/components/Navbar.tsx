@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import logo from '../image/logo.png';
+import secondaryLogo from '../image/WhatsApp_Image_2026-02-27_at_8.03.34_PM-removebg-preview.png';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,6 +31,7 @@ export default function Navbar() {
     { name: 'Home', hash: '#/' },
     { name: 'About', hash: '#about' },
     { name: 'Events', hash: '#events' },
+    { name: 'Prizes', hash: '#prizes' },
     { name: 'Schedule', hash: '#schedule' },
     { name: 'Sponsorship', hash: '#sponsorship' },
     { name: 'Gallery', hash: '#gallery' },
@@ -49,25 +51,30 @@ export default function Navbar() {
           : 'bg-transparent border-transparent px-2 py-0'
           }`}
       >
-        <div className="flex justify-between items-center h-16 lg:h-20">
-          <div className="flex items-center cursor-pointer group" onClick={() => navigateTo('#/')}>
-            <div className="relative">
+        <div className="flex justify-between items-center h-24 lg:h-28 transition-all duration-500">
+          <div className="flex items-center cursor-pointer group gap-6 flex-shrink-0" onClick={() => navigateTo('#/')}>
+            <div className="relative flex items-center gap-4 flex-shrink-0">
               <img
                 src={logo}
                 alt="UTKALPRENEUR"
-                className={`transition-all duration-500 group-hover:scale-105 ${scrolled ? 'h-14 lg:h-16' : 'h-16 lg:h-20'}`}
+                className={`transition-all duration-500 group-hover:scale-105 object-contain flex-shrink-0 ${scrolled ? 'h-14 lg:h-18' : 'h-20 lg:h-24'}`}
+              />
+              <img
+                src={secondaryLogo}
+                alt="Event Partner"
+                className={`transition-all duration-500 group-hover:scale-105 object-contain flex-shrink-0 ${scrolled ? 'h-14 lg:h-18' : 'h-20 lg:h-24'}`}
               />
               <div className="absolute -inset-4 bg-[#7A1F1F]/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
           </div>
 
-          <div className="hidden lg:flex items-center space-x-2">
-            <div className="flex items-center bg-[#7A1F1F]/5 p-1.5 rounded-full border border-[#7A1F1F]/5 gap-1">
+          <div className="hidden lg:flex items-center space-x-6 flex-shrink-0">
+            <div className="flex items-center bg-[#7A1F1F]/5 p-2 rounded-full border border-[#7A1F1F]/5 gap-2">
               {navLinks.map((link) => (
                 <button
                   key={link.hash}
                   onClick={() => navigateTo(link.hash)}
-                  className={`px-5 py-2.5 rounded-full font-black uppercase text-[11px] tracking-[0.2em] transition-all duration-300 relative group overflow-hidden ${currentRoute === link.hash
+                  className={`px-5 py-3 rounded-full font-black uppercase text-[11px] tracking-[0.2em] transition-all duration-300 relative group overflow-hidden ${currentRoute === link.hash
                     ? 'text-white bg-[#7A1F1F] shadow-lg shadow-[#7A1F1F]/20'
                     : 'text-[#7A1F1F]/70 hover:text-[#7A1F1F] hover:bg-white/50'
                     }`}
@@ -77,10 +84,10 @@ export default function Navbar() {
               ))}
             </div>
 
-            <div className="ml-4 pl-4 border-l-2 border-[#7A1F1F]/10">
+            <div className="ml-4 pl-6 border-l-2 border-[#7A1F1F]/10 flex-shrink-0">
               <button
                 onClick={() => navigateTo('#/registration')}
-                className="premium-button px-8 py-3 bg-[#D4A017] text-[#000000] rounded-full font-black uppercase text-[11px] tracking-[0.25em] transition-all hover:bg-[#7A1F1F] hover:text-[#F7E7C6] border-b-4 border-[#B8860B] active:border-b-0 active:translate-y-1"
+                className="premium-button px-8 py-4 bg-[#D4A017] text-[#000000] rounded-full font-black uppercase text-[11px] tracking-[0.25em] transition-all hover:bg-[#7A1F1F] hover:text-[#F7E7C6] border-b-4 border-[#B8860B] active:border-b-0 active:translate-y-1"
               >
                 Join Now
               </button>
@@ -89,10 +96,10 @@ export default function Navbar() {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden w-12 h-12 rounded-2xl flex items-center justify-center transition-all active:scale-90 ${scrolled ? 'bg-[#7A1F1F] text-white shadow-xl' : 'bg-white text-[#7A1F1F] shadow-lg'
+            className={`lg:hidden w-14 h-14 rounded-2xl flex items-center justify-center transition-all active:scale-90 flex-shrink-0 ${scrolled ? 'bg-[#7A1F1F] text-white shadow-xl' : 'bg-white text-[#7A1F1F] shadow-lg'
               }`}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
