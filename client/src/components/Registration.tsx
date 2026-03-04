@@ -18,7 +18,7 @@ export default function Registration({ eventName }: RegistrationProps) {
         { id: 'techspire', name: 'TECHSPIRE 1.0', desc: 'National Level Hackathon. Innovating Odisha\'s Future through Technology.', icon: <Rocket size={24} className="text-[#D4A017]" /> },
         { id: 'local2vocal', name: 'LOCAL TO VOCAL', desc: 'Theme-Based Business Exhibition. From Roots to Revenue.', icon: <Megaphone size={24} className="text-[#D4A017]" /> },
         { id: 'sharktank', name: 'MOCK SHARK TANK', desc: 'Startup Pitch Competition. Pitch Your Vision. Impress the Investors.', icon: <Presentation size={24} className="text-[#D4A017]" /> },
-        { id: 'idea2impact', name: 'IDEAZIMPACT', desc: 'Student Startup & Prototype Expo. From Idea to Real-World Impact.', icon: <Lightbulb size={24} className="text-[#D4A017]" /> },
+        { id: 'idea2impact', name: 'Idea2Impact', desc: 'Student Startup & Prototype Expo. From Idea to Real-World Impact.', icon: <Lightbulb size={24} className="text-[#D4A017]" /> },
     ];
 
     const [formData, setFormData] = useState({
@@ -51,7 +51,7 @@ export default function Registration({ eventName }: RegistrationProps) {
     const [message, setMessage] = useState('');
     const [showForm, setShowForm] = useState(false);
 
-    const isIdea2Impact = formData.event === 'IDEAZIMPACT';
+    const isIdea2Impact = formData.event === 'Idea2Impact';
     const isMockSharkTank = formData.event === 'MOCK SHARK TANK';
     const isLocal2Vocal = formData.event === 'LOCAL TO VOCAL';
     const isTechspaire = formData.event === 'TECHSPIRE 1.0';
@@ -124,6 +124,9 @@ export default function Registration({ eventName }: RegistrationProps) {
                 body.append('videoLink', videoLink);
                 if (isMockSharkTank) {
                     body.append('theme', formData.theme);
+                    if (pptFile) {
+                        body.append('ppt', pptFile);
+                    }
                     if (utrNumber) body.append('utrNumber', utrNumber);
                     if (paymentScreenshot) body.append('payment_screenshot', paymentScreenshot);
                 } else {
@@ -191,7 +194,7 @@ export default function Registration({ eventName }: RegistrationProps) {
             subtitle: "National Level Hackathon",
             description: "Innovating Odisha's Future through Technology",
             sections: [
-                { title: "Problem Domains", items: ["Odisha Tourism", "Cultural Heritage", "Art & Handicrafts", "Mining & Natural Resources", "Green Energy & Sustainability"] },
+                { title: "Problem Domains", items: ["Tourism", "Cultural Heritage", "Art & Handicrafts", "Mining & Natural Resources", "Green Energy & Sustainability"] },
                 { title: "Eligibility", items: ["Open to UG/PG students from any recognized institution", "Team members must be currently enrolled students", "All members must be from the same college", "One participant can be part of only one team"] },
                 { title: "Format", items: ["Duration: 24 Hours", "Team Size: 3-4 Members", "Mode: Offline"] },
                 { title: "Judging Criteria", items: ["Innovation | Implementation | Scalability | Impact | Technical Strength"] },
@@ -209,7 +212,7 @@ export default function Registration({ eventName }: RegistrationProps) {
                 { title: "Benefits", items: ["Cash Prize (6000/-)", "Funding Exposure", "Feedback", "Networking", "Incubation Support"] }
             ]
         },
-        'IDEAZIMPACT': {
+        'Idea2Impact': {
             subtitle: "Student Startup & Prototype Expo",
             description: "From Idea to Real-World Impact",
             sections: [
@@ -583,7 +586,7 @@ export default function Registration({ eventName }: RegistrationProps) {
                                     <div className="border-t-2 border-[#7A1F1F]/5 pt-10">
                                         <h3 className="text-2xl font-black text-[#7A1F1F] uppercase tracking-tight mb-8 flex items-center gap-3">
                                             <Lightbulb size={24} className="text-[#D4A017]" />
-                                            {isMockSharkTank ? 'Theme & Video Pitch' : 'Idea & Prototype Video'}
+                                            {isMockSharkTank ? 'Theme & Video Demonstration' : 'Idea & Prototype Video'}
                                         </h3>
 
                                         <div className="space-y-6">
@@ -617,7 +620,7 @@ export default function Registration({ eventName }: RegistrationProps) {
 
                                             {/* Video Demo Link */}
                                             <div>
-                                                <label className={labelClass}>Video Pitch (Google Drive Link)</label>
+                                                <label className={labelClass}>Video Demonstration (Google Drive Link)</label>
                                                 <div className="relative">
                                                     <Video className={iconClass} size={20} />
                                                     <input
@@ -634,6 +637,31 @@ export default function Registration({ eventName }: RegistrationProps) {
                                             </div>
                                         </div>
                                     </div>
+
+                                    {/* PPT Upload for Mock Shark Tank */}
+                                    {isMockSharkTank && (
+                                        <div className="border-t-2 border-[#7A1F1F]/5 pt-10">
+                                            <h3 className="text-2xl font-black text-[#7A1F1F] uppercase tracking-tight mb-8 flex items-center gap-3">
+                                                <Upload size={24} className="text-[#D4A017]" />
+                                                Upload PPT / Presentation
+                                            </h3>
+                                            <div>
+                                                <label className={labelClass}>PPT / Presentation File</label>
+                                                <div className="relative">
+                                                    <label className="flex items-center gap-4 w-full px-6 py-5 bg-[#F7E7C6]/30 border-2 border-dashed border-[#7A1F1F]/20 rounded-2xl cursor-pointer hover:border-[#7A1F1F]/40 hover:bg-[#F7E7C6]/50 transition-all group">
+                                                        <Upload className="text-[#7A1F1F]/40 group-hover:text-[#7A1F1F] transition-colors" size={24} />
+                                                        <div>
+                                                            <p className="font-bold text-[#7A1F1F]/60 group-hover:text-[#7A1F1F] transition-colors text-sm">
+                                                                {pptFile ? pptFile.name : 'Click to upload PPT, PPTX, or PDF'}
+                                                            </p>
+                                                            <p className="text-xs text-gray-400 mt-1">Max file size: 10MB</p>
+                                                        </div>
+                                                        <input type="file" accept=".ppt,.pptx,.pdf" onChange={handleFileChange} className="hidden" />
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
 
                                     {/* Team Member 2 (Optional) */}
                                     <div className="border-t-2 border-[#7A1F1F]/5 pt-10">
@@ -816,7 +844,7 @@ export default function Registration({ eventName }: RegistrationProps) {
                                                     <Lightbulb className={iconClass} size={20} />
                                                     <select name="theme" value={formData.theme} onChange={handleChange} required className={`${inputClass} appearance-none`}>
                                                         <option value="" disabled>Select Problem Domain</option>
-                                                        <option value="Odisha Tourism">Odisha Tourism</option>
+                                                        <option value="Tourism">Tourism</option>
                                                         <option value="Cultural Heritage">Cultural Heritage</option>
                                                         <option value="Art & Handicrafts">Art & Handicrafts</option>
                                                         <option value="Mining & Natural Resources">Mining & Natural Resources</option>

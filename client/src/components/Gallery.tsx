@@ -32,11 +32,14 @@ export default function Gallery() {
               <div className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-500 z-20 translate-y-4 group-hover:translate-y-0">
                 <p className="text-2xl font-black uppercase tracking-widest italic">Fest Moment {i + 1}</p>
               </div>
-              <div className="w-full h-full">
+              <div className="w-full h-full flex items-center justify-center bg-[#F7E7C6]/80">
                 <img
                   src={img}
                   alt={`Snapshot ${i + 1}`}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className={`group-hover:scale-110 transition-transform duration-700 ${i === images.length - 1
+                      ? 'h-full w-auto max-w-full object-contain'
+                      : 'w-full h-full object-cover'
+                    }`}
                 />
               </div>
             </div>

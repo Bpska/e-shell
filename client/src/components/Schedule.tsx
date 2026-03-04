@@ -45,7 +45,7 @@ export default function Schedule() {
               </div>
               <div>
                 <h3 className="text-4xl font-black text-[#D4A017] tracking-tight uppercase italic">Day 1</h3>
-                <span className="text-[#F7E7C6] font-bold tracking-widest uppercase text-sm">March 22nd</span>
+                <span className="text-[#F7E7C6] font-bold tracking-widest uppercase text-sm">March 21st</span>
               </div>
             </div>
             <div className="space-y-6">
@@ -72,7 +72,7 @@ export default function Schedule() {
               </div>
               <div>
                 <h3 className="text-4xl font-black text-[#F7E7C6] tracking-tight uppercase italic">Day 2</h3>
-                <span className="text-[#D4A017] font-bold tracking-widest uppercase text-sm">March 23rd</span>
+                <span className="text-[#D4A017] font-bold tracking-widest uppercase text-sm">March 22nd</span>
               </div>
             </div>
             <div className="space-y-6">
