@@ -115,6 +115,9 @@ export default function Registration({ eventName }: RegistrationProps) {
             body.append('event', formData.event);
 
             if (isLocal2Vocal) {
+                if (!utrNumber && !paymentScreenshot) {
+                    throw new Error('Payment proof (Screenshot or UTR Number) is mandatory for this event.');
+                }
                 body.append('brandName', brandName);
                 body.append('memberCount', memberCount);
                 body.append('focusArea', formData.focusArea);
@@ -123,6 +126,9 @@ export default function Registration({ eventName }: RegistrationProps) {
             } else if (isTeamOfTwo) {
                 body.append('videoLink', videoLink);
                 if (isMockSharkTank) {
+                    if (!utrNumber && !paymentScreenshot) {
+                        throw new Error('Payment proof (Screenshot or UTR Number) is mandatory for this event.');
+                    }
                     body.append('theme', formData.theme);
                     if (pptFile) {
                         body.append('ppt', pptFile);
@@ -143,6 +149,9 @@ export default function Registration({ eventName }: RegistrationProps) {
                 }
                 // Payment proof for Techspaire
                 if (isTechspaire) {
+                    if (!utrNumber && !paymentScreenshot) {
+                        throw new Error('Payment proof (Screenshot or UTR Number) is mandatory for this event.');
+                    }
                     if (utrNumber) body.append('utrNumber', utrNumber);
                     if (paymentScreenshot) body.append('payment_screenshot', paymentScreenshot);
                 }

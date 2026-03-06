@@ -117,6 +117,10 @@ app.post('/api/register', uploadFields, async (req, res) => {
             const pptFilename = req.files && req.files['ppt'] ? req.files['ppt'][0].filename : null;
             const paymentScreenshot = req.files && req.files['payment_screenshot'] ? req.files['payment_screenshot'][0].filename : null;
 
+            if (event === 'Techspaire 1.0' && !paymentScreenshot && !utrNumber) {
+                return res.status(400).json({ error: 'Payment proof (Screenshot or UTR) is required for Techspaire 1.0.' });
+            }
+
             const regResult = await db.query(
                 `INSERT INTO registrations (team_name, college, state, contact, email, theme, idea, ppt_filename, utr_number, payment_screenshot, event_name)
                  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
@@ -153,6 +157,10 @@ app.post('/api/register', uploadFields, async (req, res) => {
             // Payment proof for Mock Shark Tank
             const payScreenshot = isMockSharkTank && req.files && req.files['payment_screenshot'] ? req.files['payment_screenshot'][0].filename : null;
             const finalUtr = isMockSharkTank ? (utrNumber || null) : null;
+
+            if (isMockSharkTank && !payScreenshot && !finalUtr) {
+                return res.status(400).json({ error: 'Payment proof (Screenshot or UTR) is required for Mock Shark Tank.' });
+            }
 
             const regResult = await db.query(
                 `INSERT INTO registrations (team_name, college, state, contact, email, theme, idea, video_link, utr_number, payment_screenshot, event_name)
