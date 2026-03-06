@@ -63,9 +63,9 @@ app.post('/api/register', uploadFields, async (req, res) => {
     try {
         const { teamName, college, state, contact, email, theme, idea, event, members, videoLink, brandName, memberCount, utrNumber } = req.body;
 
-        const isIdea2Impact = event === 'Idea 2 Impact';
-        const isMockSharkTank = event === 'Mock Shark Tank';
-        const isLocal2Vocal = event === 'Local 2 Vocal';
+        const isIdea2Impact = event === 'Idea2Impact';
+        const isMockSharkTank = event === 'MOCK SHARK TANK';
+        const isLocal2Vocal = event === 'LOCAL TO VOCAL';
 
         // Validate absolute base required fields
         if (!contact || !email || !event || !teamName) {
@@ -78,6 +78,10 @@ app.post('/api/register', uploadFields, async (req, res) => {
                 return res.status(400).json({ error: 'Brand name and Number of Members are required.' });
             }
             const paymentScreenshot = req.files && req.files['payment_screenshot'] ? req.files['payment_screenshot'][0].filename : null;
+
+            if (!paymentScreenshot && !utrNumber) {
+                return res.status(400).json({ error: 'Payment proof (Screenshot or UTR) is required for Local 2 Vocal.' });
+            }
             const regResult = await db.query(
                 `INSERT INTO registrations (team_name, contact, email, brand_name, member_count, utr_number, payment_screenshot, event_name)
                  VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
@@ -87,6 +91,7 @@ app.post('/api/register', uploadFields, async (req, res) => {
             return res.status(201).json({ message: 'Registration successful!', registrationId: regResult.rows[0].id });
         }
 
+
         // For other events, validate common fields
         if (!college || !state) {
             return res.status(400).json({ error: 'College and State are required.' });
@@ -95,6 +100,7 @@ app.post('/api/register', uploadFields, async (req, res) => {
             return res.status(400).json({ error: 'Idea description is required.' });
         }
         const isIndividualEvent = isIdea2Impact || isMockSharkTank;
+
 
         // Event-specific validation
         if (!isIndividualEvent) {
@@ -117,8 +123,8 @@ app.post('/api/register', uploadFields, async (req, res) => {
             const pptFilename = req.files && req.files['ppt'] ? req.files['ppt'][0].filename : null;
             const paymentScreenshot = req.files && req.files['payment_screenshot'] ? req.files['payment_screenshot'][0].filename : null;
 
-            if (event === 'Techspaire 1.0' && !paymentScreenshot && !utrNumber) {
-                return res.status(400).json({ error: 'Payment proof (Screenshot or UTR) is required for Techspaire 1.0.' });
+            if (event === 'TECHSPIRE 1.0' && !paymentScreenshot && !utrNumber) {
+                return res.status(400).json({ error: 'Payment proof (Screenshot or UTR) is required for Techspire 1.0.' });
             }
 
             const regResult = await db.query(
@@ -141,37 +147,35 @@ app.post('/api/register', uploadFields, async (req, res) => {
                 }
             }
 
-            res.status(201).json({ message: 'Registration successful!', registrationId });
-
-        } else {
-            // Individual lead registration (Idea 2 Impact / Mock Shark Tank)
-            if (!teamName) {
-                return res.status(400).json({ error: 'Lead name is required.' });
-            }
-
-            // theme can be null for Idea 2 Impact, but provided for Mock Shark Tank
-            // idea can be text for Idea 2 Impact, but optional/empty for Mock Shark Tank
-            const finalTheme = isMockSharkTank ? theme : null;
-            const finalIdea = idea || 'Video Explaining Idea';
-
-            // Payment proof for Mock Shark Tank
-            const payScreenshot = isMockSharkTank && req.files && req.files['payment_screenshot'] ? req.files['payment_screenshot'][0].filename : null;
-            const finalUtr = isMockSharkTank ? (utrNumber || null) : null;
-
-            if (isMockSharkTank && !payScreenshot && !finalUtr) {
-                return res.status(400).json({ error: 'Payment proof (Screenshot or UTR) is required for Mock Shark Tank.' });
-            }
-
-            const regResult = await db.query(
-                `INSERT INTO registrations (team_name, college, state, contact, email, theme, idea, video_link, utr_number, payment_screenshot, event_name)
-                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
-                 RETURNING id`,
-                [teamName, college, state, contact, email, finalTheme, finalIdea, videoLink || null, finalUtr, payScreenshot, event]
-            );
-
-            res.status(201).json({ message: 'Registration successful!', registrationId: regResult.rows[0].id });
+            return res.status(201).json({ message: 'Registration successful!', registrationId });
         }
 
+        // Individual lead registration (Idea 2 Impact / Mock Shark Tank)
+        if (!teamName) {
+            return res.status(400).json({ error: 'Lead name is required.' });
+        }
+
+        // theme can be null for Idea 2 Impact, but provided for Mock Shark Tank
+        // idea can be text for Idea 2 Impact, but optional/empty for Mock Shark Tank
+        const finalTheme = isMockSharkTank ? theme : null;
+        const finalIdea = idea || 'Video Explaining Idea';
+
+        // Payment proof for Mock Shark Tank
+        const payScreenshot = isMockSharkTank && req.files && req.files['payment_screenshot'] ? req.files['payment_screenshot'][0].filename : null;
+        const finalUtr = isMockSharkTank ? (utrNumber || null) : null;
+
+        if (isMockSharkTank && !payScreenshot && !finalUtr) {
+            return res.status(400).json({ error: 'Payment proof (Screenshot or UTR) is required for Mock Shark Tank.' });
+        }
+
+        const regResult = await db.query(
+            `INSERT INTO registrations (team_name, college, state, contact, email, theme, idea, video_link, utr_number, payment_screenshot, event_name)
+                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+                 RETURNING id`,
+            [teamName, college, state, contact, email, finalTheme, finalIdea, videoLink || null, finalUtr, payScreenshot, event]
+        );
+
+        res.status(201).json({ message: 'Registration successful!', registrationId: regResult.rows[0].id });
     } catch (err) {
         console.error('Registration error:', err);
         res.status(500).json({ error: 'Server error. Please try again later.' });

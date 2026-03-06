@@ -1,5 +1,5 @@
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
-import logo from '../image/logo.png';
+import logo from '../image/logo.jpeg';
 
 export default function Footer() {
   const navigateTo = (hash: string) => {
@@ -85,7 +85,7 @@ export default function Footer() {
             </div>
             <div className="p-6 bg-white/5 rounded-3xl border border-white/5">
               <p className="text-white/40 text-[10px] uppercase tracking-[0.2em] mb-2 font-black">Organized by</p>
-              <p className="text-[#D4A017] font-black text-lg tracking-tighter uppercase italic leading-none">UEC & E-Cell Nalanda</p>
+              <p className="text-[#D4A017] font-black text-lg tracking-tighter uppercase italic leading-none">E-Cell Nalanda</p>
             </div>
           </div>
         </div>

@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
-import logo from '../image/logo.png';
+import logo from '../image/logo.jpeg';
 import secondaryLogo from '../image/WhatsApp_Image_2026-02-27_at_8.03.34_PM-removebg-preview.png';
 import tertiaryLogo from '../image/nit-logo-DD176wxf.png';
-import quaternaryLogo from '../image/image copy 6.png';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -70,11 +69,6 @@ export default function Navbar() {
                 alt="NIT Logo"
                 className={`transition-all duration-500 group-hover:scale-105 object-contain flex-shrink-0 ${scrolled ? 'h-14 lg:h-18' : 'h-20 lg:h-24'}`}
               />
-              <img
-                src={quaternaryLogo}
-                alt="Additional Event Partner"
-                className={`transition-all duration-500 group-hover:scale-105 object-contain flex-shrink-0 ${scrolled ? 'h-14 lg:h-18' : 'h-20 lg:h-24'}`}
-              />
               <div className="absolute -inset-4 bg-[#7A1F1F]/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
           </div>
@@ -123,7 +117,7 @@ export default function Navbar() {
         <div className="absolute inset-0 bg-[#F7E7C6]/95 backdrop-blur-3xl"></div>
         <div className="relative h-full flex flex-col items-center justify-center p-8">
           <div className="absolute top-12 left-10 opacity-20 transform -rotate-12">
-            <img src="/logo.png" alt="Logo" className="w-32" />
+            <img src={logo} alt="Logo" className="w-32" />
           </div>
 
           <div className="flex flex-col items-center space-y-6 w-full max-w-sm">
