@@ -15,7 +15,7 @@ export default function About() {
 
           <div className="relative z-10 space-y-8">
             <p className="text-2xl md:text-3xl text-[#000000] leading-tight font-bold">
-              <span className="text-[#7A1F1F]">Utkalpreneur E-Fest</span> is a flagship two-day entrepreneurship festival organized by the Entrepreneurship Cell (UEC & E-Cell Nalanda) of Nalanda Institute of Technology, Bhubaneswar.
+              <span className="text-[#7A1F1F]">Utkalpreneur E-Fest</span> is a flagship two-day entrepreneurship festival organized by the Entrepreneurship Cell (E-Cell Nalanda) of Nalanda Institute of Technology, Bhubaneswar.
             </p>
 
             <p className="text-xl sm:text-lg md:text-xl text-gray-700 leading-relaxed max-w-4xl font-medium">
@@ -26,7 +26,7 @@ export default function About() {
               {[
                 { label: 'Days of Innovation', value: '2', color: 'text-[#7A1F1F]' },
                 { label: 'Events & Activities', value: '10+', color: 'text-[#D4A017]' },
-                { label: 'Expected Participants', value: '1500+', color: 'text-[#7A1F1F]' }
+                { label: 'Expected Participants', value: '5000+', color: 'text-[#7A1F1F]' }
               ].map((stat, i) => (
                 <div key={i} className="p-8 bg-white/50 rounded-2xl border border-[#7A1F1F]/5 shadow-sm hover:shadow-md transition-shadow">
                   <div className={`${stat.color} text-6xl font-black mb-2 tracking-tighter`}>{stat.value}</div>

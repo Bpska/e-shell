@@ -8,7 +8,7 @@ export default function Schedule() {
       { time: '10:00 AM', event: 'Hackathon Begins', description: 'Innovation challenge kickoff' },
       { time: '10:30 AM', event: 'Startup & Cultural Exhibition Opens', description: 'Explore startups and heritage crafts' },
       { time: '01:30 PM', event: 'Lunch', description: 'Break and refreshments' },
-      { time: '06:00 PM', event: 'Networking Evening', description: 'Connect with entrepreneurs and investors' }
+      { time: '06:00 PM', event: 'Networking Evening & Hackathon Resumes', description: 'Connect with entrepreneurs and investors' }
     ],
     day2: [
       { time: '10:00 AM', event: 'Hackathon Presentation', description: 'Teams present their solutions' },

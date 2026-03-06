@@ -83,7 +83,6 @@ function App() {
         <Theme />
         <VisionMission />
         <WhyAttend />
-        <Events />
         <Prizes />
         <Schedule />
         <Stakeholders />

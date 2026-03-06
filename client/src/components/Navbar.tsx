@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import logo from '../image/logo.png';
 import secondaryLogo from '../image/WhatsApp_Image_2026-02-27_at_8.03.34_PM-removebg-preview.png';
+import tertiaryLogo from '../image/nit-logo-DD176wxf.png';
+import quaternaryLogo from '../image/image copy 6.png';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +32,6 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', hash: '#/' },
     { name: 'About', hash: '#about' },
-    { name: 'Events', hash: '#events' },
     { name: 'Prizes', hash: '#prizes' },
     { name: 'Schedule', hash: '#schedule' },
     { name: 'Sponsorship', hash: '#sponsorship' },
@@ -62,6 +63,16 @@ export default function Navbar() {
               <img
                 src={secondaryLogo}
                 alt="Event Partner"
+                className={`transition-all duration-500 group-hover:scale-105 object-contain flex-shrink-0 ${scrolled ? 'h-14 lg:h-18' : 'h-20 lg:h-24'}`}
+              />
+              <img
+                src={tertiaryLogo}
+                alt="NIT Logo"
+                className={`transition-all duration-500 group-hover:scale-105 object-contain flex-shrink-0 ${scrolled ? 'h-14 lg:h-18' : 'h-20 lg:h-24'}`}
+              />
+              <img
+                src={quaternaryLogo}
+                alt="Additional Event Partner"
                 className={`transition-all duration-500 group-hover:scale-105 object-contain flex-shrink-0 ${scrolled ? 'h-14 lg:h-18' : 'h-20 lg:h-24'}`}
               />
               <div className="absolute -inset-4 bg-[#7A1F1F]/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>

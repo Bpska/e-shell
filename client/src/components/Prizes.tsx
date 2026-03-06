@@ -1,24 +1,15 @@
-import { Trophy, Star, TrendingUp, Presentation } from 'lucide-react';
+import { Trophy, Star, TrendingUp } from 'lucide-react';
 
 export default function Prizes() {
     const prizes = [
         {
             title: 'Techspaire 1.0',
             subtitle: 'Innovation Hackathon',
-            amount: '₹30,000',
+            amount: '₹50,000',
             label: 'PRIZE POOL',
             icon: <Trophy size={48} />,
             gradient: 'from-[#7A1F1F] to-[#5A1515]',
             benefits: ['Cash Rewards', 'Direct Mentorship', 'Incubation Support', 'Certificates']
-        },
-        {
-            title: 'Mock Shark Tank',
-            subtitle: 'Pitch Competition',
-            amount: '₹6,000',
-            label: 'TOP PRIZE',
-            icon: <Presentation size={48} />,
-            gradient: 'from-[#D4A017] to-[#B8860B]',
-            benefits: ['Seed Funding Opportunity', 'Investor Networking', 'Startup Mentorship', 'Certificates']
         }
     ];
 
@@ -29,13 +20,13 @@ export default function Prizes() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-20">
                     <h2 className="text-5xl md:text-6xl font-black text-[#7A1F1F] mb-4 uppercase tracking-tighter italic">
-                        Win Big Rewards
+                        Prize Pool ₹50,000
                     </h2>
                     <div className="w-32 h-2 bg-[#D4A017] mx-auto rounded-full mb-6 shadow-sm"></div>
                     <p className="text-xl text-gray-500 font-bold uppercase tracking-widest italic">Innovation Meets Recognition</p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-10 lg:gap-16 max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 gap-10 lg:gap-16 max-w-2xl mx-auto">
                     {prizes.map((prize, index) => (
                         <div
                             key={index}
@@ -44,10 +35,6 @@ export default function Prizes() {
                             <div className={`absolute top-0 left-0 w-2 h-full bg-gradient-to-b ${prize.gradient}`}></div>
 
                             <div className="flex items-start justify-between mb-10">
-                                <div className="space-y-2">
-                                    <h3 className="text-3xl font-black text-[#7A1F1F] tracking-tighter uppercase italic">{prize.title}</h3>
-                                    <p className="text-[#D4A017] font-black text-sm tracking-widest uppercase">{prize.subtitle}</p>
-                                </div>
                                 <div className={`p-4 bg-white rounded-2xl shadow-xl border-b-4 border-gray-100 text-[#7A1F1F] group-hover:scale-110 transition-transform duration-500`}>
                                     {prize.icon}
                                 </div>

@@ -30,7 +30,7 @@ export default function Impact() {
   const impacts = [
     {
       icon: <Users size={48} />,
-      number: 1500,
+      number: 5000,
       suffix: '+',
       label: 'Student Participants'
     },
