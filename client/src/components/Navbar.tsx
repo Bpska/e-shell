@@ -57,7 +57,7 @@ export default function Navbar() {
               <img
                 src={newLogo}
                 alt="UTKALPRENEUR"
-                className={`transition-all duration-500 group-hover:scale-105 object-contain flex-shrink-0 drop-shadow-[0_0_15px_rgba(212,160,23,0.4)] ${scrolled ? 'h-10 md:h-15 lg:h-19' : 'h-12 md:h-22 lg:h-26'}`}
+                className={`transition-all duration-500 group-hover:scale-105 object-contain flex-shrink-0 ${scrolled ? 'h-10 md:h-14 lg:h-18' : 'h-12 md:h-20 lg:h-24'}`}
               />
               <img
                 src={secondaryLogo}
@@ -67,7 +67,7 @@ export default function Navbar() {
               <img
                 src={tertiaryLogo}
                 alt="NIT Logo"
-                className={`transition-all duration-500 group-hover:scale-105 object-contain flex-shrink-0 ${scrolled ? 'h-10 md:h-14 lg:h-18' : 'h-12 md:h-20 lg:h-24'}`}
+                className={`transition-all duration-500 group-hover:scale-105 object-contain flex-shrink-0 ${scrolled ? 'h-8 md:h-12 lg:h-15' : 'h-10 md:h-16 lg:h-20'}`}
               />
               <div className="absolute -inset-4 bg-[#7A1F1F]/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>

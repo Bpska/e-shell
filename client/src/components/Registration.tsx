@@ -115,26 +115,26 @@ export default function Registration({ eventName }: RegistrationProps) {
             body.append('event', formData.event);
 
             if (isLocal2Vocal) {
-                if (!utrNumber && !paymentScreenshot) {
-                    throw new Error('Payment proof (Screenshot or UTR Number) is mandatory for this event.');
+                if (!utrNumber || !paymentScreenshot) {
+                    throw new Error('Both Payment Screenshot AND UTR Number are mandatory for this event.');
                 }
                 body.append('brandName', brandName);
                 body.append('memberCount', memberCount);
                 body.append('focusArea', formData.focusArea);
-                if (utrNumber) body.append('utrNumber', utrNumber);
-                if (paymentScreenshot) body.append('payment_screenshot', paymentScreenshot);
+                body.append('utrNumber', utrNumber);
+                body.append('payment_screenshot', paymentScreenshot);
             } else if (isTeamOfTwo) {
                 body.append('videoLink', videoLink);
                 if (isMockSharkTank) {
-                    if (!utrNumber && !paymentScreenshot) {
-                        throw new Error('Payment proof (Screenshot or UTR Number) is mandatory for this event.');
+                    if (!utrNumber || !paymentScreenshot) {
+                        throw new Error('Both Payment Screenshot AND UTR Number are mandatory for this event.');
                     }
                     body.append('theme', formData.theme);
                     if (pptFile) {
                         body.append('ppt', pptFile);
                     }
-                    if (utrNumber) body.append('utrNumber', utrNumber);
-                    if (paymentScreenshot) body.append('payment_screenshot', paymentScreenshot);
+                    body.append('utrNumber', utrNumber);
+                    body.append('payment_screenshot', paymentScreenshot);
                 } else {
                     body.append('idea', formData.idea);
                 }
@@ -149,11 +149,11 @@ export default function Registration({ eventName }: RegistrationProps) {
                 }
                 // Payment proof for Techspaire
                 if (isTechspaire) {
-                    if (!utrNumber && !paymentScreenshot) {
-                        throw new Error('Payment proof (Screenshot or UTR Number) is mandatory for this event.');
+                    if (!utrNumber || !paymentScreenshot) {
+                        throw new Error('Both Payment Screenshot AND UTR Number are mandatory for this event.');
                     }
-                    if (utrNumber) body.append('utrNumber', utrNumber);
-                    if (paymentScreenshot) body.append('payment_screenshot', paymentScreenshot);
+                    body.append('utrNumber', utrNumber);
+                    body.append('payment_screenshot', paymentScreenshot);
                 }
                 const allMembers = [...members];
                 if (optionalMember && optionalMember.name && optionalMember.email && optionalMember.phone) {
@@ -504,18 +504,9 @@ export default function Registration({ eventName }: RegistrationProps) {
                                                 </div>
                                             </div>
 
-                                            <div className="flex gap-3 mb-6">
-                                                <button type="button" onClick={() => setPaymentMethod('qr')} className={`flex-1 py-3 rounded-2xl font-black text-sm border-2 transition-all ${paymentMethod === 'qr' ? 'bg-[#7A1F1F] text-white border-[#7A1F1F]' : 'bg-white text-[#7A1F1F] border-[#7A1F1F]/20 hover:border-[#7A1F1F]/50'}`}>
-                                                    📸 Upload Screenshot
-                                                </button>
-                                                <button type="button" onClick={() => setPaymentMethod('utr')} className={`flex-1 py-3 rounded-2xl font-black text-sm border-2 transition-all ${paymentMethod === 'utr' ? 'bg-[#7A1F1F] text-white border-[#7A1F1F]' : 'bg-white text-[#7A1F1F] border-[#7A1F1F]/20 hover:border-[#7A1F1F]/50'}`}>
-                                                    🔢 Enter UTR Number
-                                                </button>
-                                            </div>
-
-                                            {paymentMethod === 'qr' ? (
+                                            <div className="space-y-6">
                                                 <div>
-                                                    <label className={labelClass}>Payment Screenshot</label>
+                                                    <label className={labelClass}>Payment Screenshot <span className="text-red-500">*</span></label>
                                                     <label className="flex items-center gap-4 w-full px-6 py-5 bg-[#F7E7C6]/30 border-2 border-dashed border-[#7A1F1F]/20 rounded-2xl cursor-pointer hover:border-[#D4A017] hover:bg-[#F7E7C6]/50 transition-all group">
                                                         <Upload className="text-[#7A1F1F]/40 group-hover:text-[#D4A017] transition-colors flex-shrink-0" size={24} />
                                                         <div>
@@ -527,16 +518,15 @@ export default function Registration({ eventName }: RegistrationProps) {
                                                         <input type="file" accept=".jpg,.jpeg,.png,.webp" onChange={(e) => { if (e.target.files?.[0]) setPaymentScreenshot(e.target.files[0]); }} className="hidden" />
                                                     </label>
                                                 </div>
-                                            ) : (
                                                 <div>
-                                                    <label className={labelClass}>UTR / Transaction Number</label>
+                                                    <label className={labelClass}>UTR / Transaction Number <span className="text-red-500">*</span></label>
                                                     <div className="relative">
                                                         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#7A1F1F]/30 font-black text-sm">#</span>
-                                                        <input type="text" value={utrNumber} onChange={(e) => setUtrNumber(e.target.value)} placeholder="e.g. 412345678901" className="w-full pl-10 pr-4 py-4 bg-[#F7E7C6]/30 border-2 border-[#7A1F1F]/10 rounded-2xl font-bold text-[#000] placeholder:text-gray-400 focus:outline-none focus:border-[#7A1F1F] focus:ring-2 focus:ring-[#7A1F1F]/10 transition-all" />
+                                                        <input type="text" value={utrNumber} onChange={(e) => setUtrNumber(e.target.value)} required placeholder="e.g. 412345678901" className="w-full pl-10 pr-4 py-4 bg-[#F7E7C6]/30 border-2 border-[#7A1F1F]/10 rounded-2xl font-bold text-[#000] placeholder:text-gray-400 focus:outline-none focus:border-[#7A1F1F] focus:ring-2 focus:ring-[#7A1F1F]/10 transition-all" />
                                                     </div>
                                                     <p className="text-xs text-gray-400 font-medium mt-2">You can find the UTR/Transaction ID in your bank or UPI app payment history.</p>
                                                 </div>
-                                            )}
+                                            </div>
                                         </div>
                                     </>
                                 )}
@@ -757,18 +747,9 @@ export default function Registration({ eventName }: RegistrationProps) {
                                                     </div>
                                                 </div>
 
-                                                <div className="flex gap-3 mb-6">
-                                                    <button type="button" onClick={() => setPaymentMethod('qr')} className={`flex-1 py-3 rounded-2xl font-black text-sm border-2 transition-all ${paymentMethod === 'qr' ? 'bg-[#7A1F1F] text-white border-[#7A1F1F]' : 'bg-white text-[#7A1F1F] border-[#7A1F1F]/20 hover:border-[#7A1F1F]/50'}`}>
-                                                        📸 Upload Screenshot
-                                                    </button>
-                                                    <button type="button" onClick={() => setPaymentMethod('utr')} className={`flex-1 py-3 rounded-2xl font-black text-sm border-2 transition-all ${paymentMethod === 'utr' ? 'bg-[#7A1F1F] text-white border-[#7A1F1F]' : 'bg-white text-[#7A1F1F] border-[#7A1F1F]/20 hover:border-[#7A1F1F]/50'}`}>
-                                                        🔢 Enter UTR Number
-                                                    </button>
-                                                </div>
-
-                                                {paymentMethod === 'qr' ? (
+                                                <div className="space-y-6">
                                                     <div>
-                                                        <label className={labelClass}>Payment Screenshot</label>
+                                                        <label className={labelClass}>Payment Screenshot <span className="text-red-500">*</span></label>
                                                         <label className="flex items-center gap-4 w-full px-6 py-5 bg-[#F7E7C6]/30 border-2 border-dashed border-[#7A1F1F]/20 rounded-2xl cursor-pointer hover:border-[#D4A017] hover:bg-[#F7E7C6]/50 transition-all group">
                                                             <Upload className="text-[#7A1F1F]/40 group-hover:text-[#D4A017] transition-colors flex-shrink-0" size={24} />
                                                             <div>
@@ -780,16 +761,15 @@ export default function Registration({ eventName }: RegistrationProps) {
                                                             <input type="file" accept=".jpg,.jpeg,.png,.webp" onChange={(e) => { if (e.target.files?.[0]) setPaymentScreenshot(e.target.files[0]); }} className="hidden" />
                                                         </label>
                                                     </div>
-                                                ) : (
                                                     <div>
-                                                        <label className={labelClass}>UTR / Transaction Number</label>
+                                                        <label className={labelClass}>UTR / Transaction Number <span className="text-red-500">*</span></label>
                                                         <div className="relative">
                                                             <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#7A1F1F]/30 font-black text-sm">#</span>
-                                                            <input type="text" value={utrNumber} onChange={(e) => setUtrNumber(e.target.value)} placeholder="e.g. 412345678901" className="w-full pl-10 pr-4 py-4 bg-[#F7E7C6]/30 border-2 border-[#7A1F1F]/10 rounded-2xl font-bold text-[#000] placeholder:text-gray-400 focus:outline-none focus:border-[#7A1F1F] focus:ring-2 focus:ring-[#7A1F1F]/10 transition-all" />
+                                                            <input type="text" value={utrNumber} onChange={(e) => setUtrNumber(e.target.value)} required placeholder="e.g. 412345678901" className="w-full pl-10 pr-4 py-4 bg-[#F7E7C6]/30 border-2 border-[#7A1F1F]/10 rounded-2xl font-bold text-[#000] placeholder:text-gray-400 focus:outline-none focus:border-[#7A1F1F] focus:ring-2 focus:ring-[#7A1F1F]/10 transition-all" />
                                                         </div>
                                                         <p className="text-xs text-gray-400 font-medium mt-2">You can find the UTR/Transaction ID in your bank or UPI app payment history.</p>
                                                     </div>
-                                                )}
+                                                </div>
                                             </div>
                                         )}
                                     </>
@@ -1002,26 +982,9 @@ export default function Registration({ eventName }: RegistrationProps) {
                                         </div>
 
                                         {/* Payment Method Toggle */}
-                                        <div className="flex gap-3 mb-6">
-                                            <button
-                                                type="button"
-                                                onClick={() => setPaymentMethod('qr')}
-                                                className={`flex-1 py-3 rounded-2xl font-black text-sm border-2 transition-all ${paymentMethod === 'qr' ? 'bg-[#7A1F1F] text-white border-[#7A1F1F]' : 'bg-white text-[#7A1F1F] border-[#7A1F1F]/20 hover:border-[#7A1F1F]/50'}`}
-                                            >
-                                                📸 Upload Screenshot
-                                            </button>
-                                            <button
-                                                type="button"
-                                                onClick={() => setPaymentMethod('utr')}
-                                                className={`flex-1 py-3 rounded-2xl font-black text-sm border-2 transition-all ${paymentMethod === 'utr' ? 'bg-[#7A1F1F] text-white border-[#7A1F1F]' : 'bg-white text-[#7A1F1F] border-[#7A1F1F]/20 hover:border-[#7A1F1F]/50'}`}
-                                            >
-                                                🔢 Enter UTR Number
-                                            </button>
-                                        </div>
-
-                                        {paymentMethod === 'qr' ? (
+                                        <div className="space-y-6">
                                             <div>
-                                                <label className={labelClass}>Payment Screenshot</label>
+                                                <label className={labelClass}>Payment Screenshot <span className="text-red-500">*</span></label>
                                                 <label className="flex items-center gap-4 w-full px-6 py-5 bg-[#F7E7C6]/30 border-2 border-dashed border-[#7A1F1F]/20 rounded-2xl cursor-pointer hover:border-[#D4A017] hover:bg-[#F7E7C6]/50 transition-all group">
                                                     <Upload className="text-[#7A1F1F]/40 group-hover:text-[#D4A017] transition-colors flex-shrink-0" size={24} />
                                                     <div>
@@ -1038,22 +1001,22 @@ export default function Registration({ eventName }: RegistrationProps) {
                                                     />
                                                 </label>
                                             </div>
-                                        ) : (
                                             <div>
-                                                <label className={labelClass}>UTR / Transaction Number</label>
+                                                <label className={labelClass}>UTR / Transaction Number <span className="text-red-500">*</span></label>
                                                 <div className="relative">
                                                     <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#7A1F1F]/30 font-black text-sm">#</span>
                                                     <input
                                                         type="text"
                                                         value={utrNumber}
                                                         onChange={(e) => setUtrNumber(e.target.value)}
+                                                        required
                                                         placeholder="e.g. 412345678901"
                                                         className="w-full pl-10 pr-4 py-4 bg-[#F7E7C6]/30 border-2 border-[#7A1F1F]/10 rounded-2xl font-bold text-[#000] placeholder:text-gray-400 focus:outline-none focus:border-[#7A1F1F] focus:ring-2 focus:ring-[#7A1F1F]/10 transition-all"
                                                     />
                                                 </div>
                                                 <p className="text-xs text-gray-400 font-medium mt-2">You can find the UTR/Transaction ID in your bank or UPI app payment history.</p>
                                             </div>
-                                        )}
+                                        </div>
                                     </div>
                                 )}
 

@@ -79,8 +79,8 @@ app.post('/api/register', uploadFields, async (req, res) => {
             }
             const paymentScreenshot = req.files && req.files['payment_screenshot'] ? req.files['payment_screenshot'][0].filename : null;
 
-            if (!paymentScreenshot && !utrNumber) {
-                return res.status(400).json({ error: 'Payment proof (Screenshot or UTR) is required for Local 2 Vocal.' });
+            if (!paymentScreenshot || !utrNumber) {
+                return res.status(400).json({ error: 'Both Payment Screenshot AND UTR Number are required for Local 2 Vocal.' });
             }
             const regResult = await db.query(
                 `INSERT INTO registrations (team_name, contact, email, brand_name, member_count, utr_number, payment_screenshot, focus_area, event_name)
@@ -123,8 +123,8 @@ app.post('/api/register', uploadFields, async (req, res) => {
             const pptFilename = req.files && req.files['ppt'] ? req.files['ppt'][0].filename : null;
             const paymentScreenshot = req.files && req.files['payment_screenshot'] ? req.files['payment_screenshot'][0].filename : null;
 
-            if (event === 'TECHSPIRE 1.0' && !paymentScreenshot && !utrNumber) {
-                return res.status(400).json({ error: 'Payment proof (Screenshot or UTR) is required for Techspire 1.0.' });
+            if (event === 'TECHSPIRE 1.0' && (!paymentScreenshot || !utrNumber)) {
+                return res.status(400).json({ error: 'Both Payment Screenshot AND UTR Number are required for Techspire 1.0.' });
             }
 
             const regResult = await db.query(
@@ -164,8 +164,8 @@ app.post('/api/register', uploadFields, async (req, res) => {
         const pptFilename = isMockSharkTank && req.files && req.files['ppt'] ? req.files['ppt'][0].filename : null;
         const finalUtr = isMockSharkTank ? (utrNumber || null) : null;
 
-        if (isMockSharkTank && !payScreenshot && !finalUtr) {
-            return res.status(400).json({ error: 'Payment proof (Screenshot or UTR) is required for Mock Shark Tank.' });
+        if (isMockSharkTank && (!payScreenshot || !finalUtr)) {
+            return res.status(400).json({ error: 'Both Payment Screenshot AND UTR Number are required for Mock Shark Tank.' });
         }
 
         const regResult = await db.query(
@@ -178,7 +178,7 @@ app.post('/api/register', uploadFields, async (req, res) => {
         res.status(201).json({ message: 'Registration successful!', registrationId: regResult.rows[0].id });
     } catch (err) {
         console.error('Registration error:', err);
-        res.status(500).json({ error: 'Server error. Please try again later.' });
+        res.status(500).json({ error: 'Server error. Please try again later.', details: err.message });
     }
 });
 

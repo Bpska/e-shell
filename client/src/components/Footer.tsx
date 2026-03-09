@@ -24,7 +24,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-16 mb-20">
           <div className="space-y-8">
             <div className="flex items-center space-x-3">
-              <img src={logo} alt="UTKALPRENEUR E-FEST 2026" className="h-24 w-auto rounded-xl shadow-lg border-2 border-[#D4A017]/20" />
+              <img src={logo} alt="UTKALPRENEUR E-FEST 2026" className="h-28 w-auto object-contain" />
             </div>
             <p className="text-[#F7E7C6] text-lg font-black italic tracking-tight leading-tight uppercase">
               "Where Tradition Meets Innovation"
