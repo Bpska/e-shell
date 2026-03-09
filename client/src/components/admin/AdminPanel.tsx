@@ -18,14 +18,15 @@ interface TeamMember {
 interface Registration {
     id: number;
     team_name: string;
-    college: string;
-    state: string;
+    college: string | null;
+    state: string | null;
     contact: string;
     email: string;
-    theme: string;
+    theme: string | null;
     brand_name: string | null;
     member_count: string | null;
-    idea: string;
+    focus_area: string | null;
+    idea: string | null;
     ppt_filename: string | null;
     video_link: string | null;
     utr_number: string | null;
@@ -290,11 +291,13 @@ function RegistrationsView() {
     useEffect(() => { fetchRegistrations(); }, [fetchRegistrations]);
 
     const filtered = registrations.filter(r => {
+        const s = search.toLowerCase();
         const matchesSearch = !search ||
-            r.team_name.toLowerCase().includes(search.toLowerCase()) ||
-            r.email.toLowerCase().includes(search.toLowerCase()) ||
-            r.college.toLowerCase().includes(search.toLowerCase()) ||
-            r.contact.includes(search);
+            (r.team_name || '').toLowerCase().includes(s) ||
+            (r.email || '').toLowerCase().includes(s) ||
+            (r.college || '').toLowerCase().includes(s) ||
+            (r.brand_name || '').toLowerCase().includes(s) ||
+            (r.contact || '').includes(search);
         const matchesEvent = !filterEvent || r.event_name === filterEvent;
         return matchesSearch && matchesEvent;
     });
@@ -313,16 +316,18 @@ function RegistrationsView() {
     };
 
     const handleExport = () => {
-        const headers = ['ID', 'Team Name', 'College', 'State', 'Contact', 'Email', 'Theme', 'Idea', 'Event', 'Members', 'Date'];
+        const headers = ['ID', 'Team/Lead Name', 'College', 'State', 'Contact', 'Email', 'Theme', 'Idea', 'Brand Name', 'Focus Area', 'Event', 'Members', 'Date'];
         const rows = filtered.map(r => [
             r.id,
-            r.team_name,
-            r.college,
-            r.state,
-            r.contact,
-            r.email,
-            r.theme,
-            `"${r.idea.replace(/"/g, '""')}"`,
+            r.team_name || '',
+            r.college || '',
+            r.state || '',
+            r.contact || '',
+            r.email || '',
+            r.theme || '',
+            `"${(r.idea || '').replace(/"/g, '""')}"`,
+            r.brand_name || '',
+            r.focus_area || '',
             r.event_name,
             r.members?.map(m => `${m.name} (${m.email})`).join('; ') || '',
             new Date(r.created_at).toLocaleDateString(),
@@ -437,33 +442,40 @@ function RegistrationsView() {
 
                             {/* Quick Info */}
                             <div className="px-5 pb-4 flex flex-wrap gap-4 text-xs">
-                                <span className="flex items-center gap-1.5 text-slate-500">
-                                    <MapPin size={12} className="text-slate-400" /> {r.college}, {r.state}
-                                </span>
+                                {r.college && r.state && (
+                                    <span className="flex items-center gap-1.5 text-slate-500">
+                                        <MapPin size={12} className="text-slate-400" /> {r.college}, {r.state}
+                                    </span>
+                                )}
                                 <span className="flex items-center gap-1.5 text-slate-500">
                                     <Mail size={12} className="text-slate-400" /> {r.email}
                                 </span>
                                 <span className="flex items-center gap-1.5 text-slate-500">
                                     <Phone size={12} className="text-slate-400" /> {r.contact}
                                 </span>
+                                {r.brand_name && (
+                                    <span className="flex items-center gap-1.5 text-slate-500">
+                                        <Building2 size={12} className="text-slate-400" /> {r.brand_name}
+                                    </span>
+                                )}
                                 {r.members?.length > 0 && (
                                     <span className="flex items-center gap-1.5 text-slate-500">
                                         <Users size={12} className="text-slate-400" /> {r.members.length} members
                                     </span>
                                 )}
-                                {r.event_name === 'Idea 2 Impact' && (
+                                {r.event_name === 'Idea2Impact' && (
                                     <span className="text-[9px] font-black px-2 py-0.5 rounded-md bg-purple-50 text-purple-600 border border-purple-100">
                                         IDEA 2 IMPACT - LEAD
                                     </span>
                                 )}
-                                {r.event_name === 'Mock Shark Tank' && (
+                                {r.event_name === 'MOCK SHARK TANK' && (
                                     <span className="text-[9px] font-black px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-600 border border-emerald-100">
                                         SHARK TANK - LEAD
                                     </span>
                                 )}
-                                {r.event_name === 'Local 2 Vocal' && (
+                                {r.event_name === 'LOCAL TO VOCAL' && (
                                     <span className="text-[9px] font-black px-2 py-0.5 rounded-md bg-orange-50 text-orange-600 border border-orange-100">
-                                        LOCAL 2 VOCAL
+                                        LOCAL TO VOCAL
                                     </span>
                                 )}
                             </div>
@@ -473,8 +485,8 @@ function RegistrationsView() {
                                 <div className="border-t border-slate-100 p-5 bg-slate-50/50 space-y-6 animate-fadeIn">
 
                                     {/* Local 2 Vocal Specifics */}
-                                    {r.event_name === 'Local 2 Vocal' && (
-                                        <div className="grid sm:grid-cols-2 gap-4">
+                                    {r.event_name === 'LOCAL TO VOCAL' && (
+                                        <div className="grid sm:grid-cols-3 gap-4">
                                             <div className="bg-white rounded-xl p-4 border border-slate-100">
                                                 <div className="flex items-center gap-2 mb-2">
                                                     <Building2 size={14} className="text-orange-500" />
@@ -489,11 +501,18 @@ function RegistrationsView() {
                                                 </div>
                                                 <p className="text-slate-800 font-bold text-sm">{r.member_count || 'N/A'}</p>
                                             </div>
+                                            <div className="bg-white rounded-xl p-4 border border-slate-100">
+                                                <div className="flex items-center gap-2 mb-2">
+                                                    <Lightbulb size={14} className="text-amber-500" />
+                                                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-wider">Focus Area</span>
+                                                </div>
+                                                <p className="text-slate-800 font-bold text-sm">{r.focus_area || 'N/A'}</p>
+                                            </div>
                                         </div>
                                     )}
 
                                     {/* Theme & Idea (for non Local 2 Vocal) */}
-                                    {r.event_name !== 'Local 2 Vocal' && (
+                                    {r.event_name !== 'LOCAL TO VOCAL' && (
                                         <div className={`grid ${r.theme ? 'sm:grid-cols-2' : ''} gap-4`}>
                                             {r.theme && (
                                                 <div className="bg-white rounded-xl p-4 border border-slate-100">
@@ -553,7 +572,7 @@ function RegistrationsView() {
                                     )}
 
                                     {/* ═══════ PAYMENT PROOF SECTION ═══════ */}
-                                    {(r.event_name === 'Techspaire 1.0' || r.event_name === 'Local 2 Vocal' || r.event_name === 'Mock Shark Tank') && (
+                                    {(r.event_name === 'TECHSPIRE 1.0' || r.event_name === 'LOCAL TO VOCAL' || r.event_name === 'MOCK SHARK TANK') && (
                                         <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-5 border-2 border-amber-200/60">
                                             {/* Section Header */}
                                             <div className="flex items-center justify-between mb-5">
@@ -567,7 +586,7 @@ function RegistrationsView() {
                                                     </div>
                                                 </div>
                                                 <span className="text-xs font-black px-3 py-1 rounded-full bg-amber-500 text-white">
-                                                    {r.event_name === 'Techspaire 1.0' ? '₹299' : r.event_name === 'Local 2 Vocal' ? '₹5,000' : '₹199'}
+                                                    {r.event_name === 'TECHSPIRE 1.0' ? '₹299' : r.event_name === 'LOCAL TO VOCAL' ? '₹5,000' : '₹199'}
                                                 </span>
                                             </div>
 

@@ -61,7 +61,7 @@ const uploadFields = upload.fields([
 // ──────────────────────────────────────────────
 app.post('/api/register', uploadFields, async (req, res) => {
     try {
-        const { teamName, college, state, contact, email, theme, idea, event, members, videoLink, brandName, memberCount, utrNumber } = req.body;
+        const { teamName, college, state, contact, email, theme, idea, event, members, videoLink, brandName, memberCount, utrNumber, focusArea } = req.body;
 
         const isIdea2Impact = event === 'Idea2Impact';
         const isMockSharkTank = event === 'MOCK SHARK TANK';
@@ -83,10 +83,10 @@ app.post('/api/register', uploadFields, async (req, res) => {
                 return res.status(400).json({ error: 'Payment proof (Screenshot or UTR) is required for Local 2 Vocal.' });
             }
             const regResult = await db.query(
-                `INSERT INTO registrations (team_name, contact, email, brand_name, member_count, utr_number, payment_screenshot, event_name)
-                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+                `INSERT INTO registrations (team_name, contact, email, brand_name, member_count, utr_number, payment_screenshot, focus_area, event_name)
+                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
                  RETURNING id`,
-                [teamName, contact, email, brandName, memberCount, utrNumber || null, paymentScreenshot || null, event]
+                [teamName, contact, email, brandName, memberCount, utrNumber || null, paymentScreenshot || null, focusArea || null, event]
             );
             return res.status(201).json({ message: 'Registration successful!', registrationId: regResult.rows[0].id });
         }
@@ -96,7 +96,7 @@ app.post('/api/register', uploadFields, async (req, res) => {
         if (!college || !state) {
             return res.status(400).json({ error: 'College and State are required.' });
         }
-        if (!isMockSharkTank && !idea) {
+        if (!isIdea2Impact && !isMockSharkTank && !idea) {
             return res.status(400).json({ error: 'Idea description is required.' });
         }
         const isIndividualEvent = isIdea2Impact || isMockSharkTank;

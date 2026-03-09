@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS registrations (
     video_link TEXT,
     utr_number VARCHAR(100),
     payment_screenshot VARCHAR(255),
+    focus_area VARCHAR(255),
     event_name VARCHAR(100) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
