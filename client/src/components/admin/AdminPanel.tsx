@@ -316,7 +316,7 @@ function RegistrationsView() {
     };
 
     const handleExport = () => {
-        const headers = ['ID', 'Team/Lead Name', 'College', 'State', 'Contact', 'Email', 'Theme', 'Idea', 'Brand Name', 'Focus Area', 'Event', 'Members', 'Date'];
+        const headers = ['ID', 'Team/Lead Name', 'College', 'State', 'Contact', 'Email', 'Theme', 'Idea', 'Brand Name', 'Member Count', 'Focus Area', 'Event', 'UTR Number', 'Video Link', 'PPT Filename', 'Payment Screenshot', 'Date'];
         const rows = filtered.map(r => [
             r.id,
             r.team_name || '',
@@ -327,9 +327,13 @@ function RegistrationsView() {
             r.theme || '',
             `"${(r.idea || '').replace(/"/g, '""')}"`,
             r.brand_name || '',
+            r.member_count || '',
             r.focus_area || '',
             r.event_name,
-            r.members?.map(m => `${m.name} (${m.email})`).join('; ') || '',
+            r.utr_number || '',
+            r.video_link || '',
+            r.ppt_filename || '',
+            r.payment_screenshot || '',
             new Date(r.created_at).toLocaleDateString(),
         ]);
         const csv = [headers.join(','), ...rows.map(row => row.join(','))].join('\n');
@@ -476,6 +480,11 @@ function RegistrationsView() {
                                 {r.event_name === 'LOCAL TO VOCAL' && (
                                     <span className="text-[9px] font-black px-2 py-0.5 rounded-md bg-orange-50 text-orange-600 border border-orange-100">
                                         LOCAL TO VOCAL
+                                    </span>
+                                )}
+                                {r.utr_number && (
+                                    <span className="text-[9px] font-black px-2 py-0.5 rounded-md bg-amber-50 text-amber-600 border border-amber-100">
+                                        UTR: {r.utr_number}
                                     </span>
                                 )}
                             </div>

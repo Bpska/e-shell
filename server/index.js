@@ -160,8 +160,8 @@ app.post('/api/register', uploadFields, async (req, res) => {
         const finalTheme = isMockSharkTank ? theme : null;
         const finalIdea = idea || 'Video Explaining Idea';
 
-        // Payment proof for Mock Shark Tank
         const payScreenshot = isMockSharkTank && req.files && req.files['payment_screenshot'] ? req.files['payment_screenshot'][0].filename : null;
+        const pptFilename = isMockSharkTank && req.files && req.files['ppt'] ? req.files['ppt'][0].filename : null;
         const finalUtr = isMockSharkTank ? (utrNumber || null) : null;
 
         if (isMockSharkTank && !payScreenshot && !finalUtr) {
@@ -169,10 +169,10 @@ app.post('/api/register', uploadFields, async (req, res) => {
         }
 
         const regResult = await db.query(
-            `INSERT INTO registrations (team_name, college, state, contact, email, theme, idea, video_link, utr_number, payment_screenshot, event_name)
-                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+            `INSERT INTO registrations (team_name, college, state, contact, email, theme, idea, video_link, utr_number, payment_screenshot, ppt_filename, event_name)
+                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
                  RETURNING id`,
-            [teamName, college, state, contact, email, finalTheme, finalIdea, videoLink || null, finalUtr, payScreenshot, event]
+            [teamName, college, state, contact, email, finalTheme, finalIdea, videoLink || null, finalUtr, payScreenshot, pptFilename, event]
         );
 
         res.status(201).json({ message: 'Registration successful!', registrationId: regResult.rows[0].id });
