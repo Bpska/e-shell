@@ -2,7 +2,8 @@ import { useState, useEffect, useCallback } from 'react';
 import {
     Users, Calendar, Search, Trash2, Download,
     LogOut, LayoutDashboard, ListOrdered, Shield, ChevronDown, Menu, X,
-    Eye, UserPlus, MapPin, Mail, Phone, Lightbulb, FileText, RefreshCw, Building2
+    Eye, UserPlus, MapPin, Mail, Phone, Lightbulb, FileText, RefreshCw, Building2,
+    MousePointerClick, Globe
 } from 'lucide-react';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
@@ -172,12 +173,18 @@ export default function AdminPanel() {
 function DashboardView() {
     const [registrations, setRegistrations] = useState<Registration[]>([]);
     const [loading, setLoading] = useState(true);
+    const [visitStats, setVisitStats] = useState({ total: 0, unique: 0, today: 0 });
 
     useEffect(() => {
         fetch(`${API_URL}/registrations`)
             .then(res => res.json())
             .then(data => { setRegistrations(data); setLoading(false); })
             .catch(() => setLoading(false));
+
+        fetch(`${API_URL}/visits/count`)
+            .then(res => res.json())
+            .then(data => setVisitStats(data))
+            .catch(() => { });
     }, []);
 
     const total = registrations.length;
@@ -192,6 +199,7 @@ function DashboardView() {
         { label: 'Total Teams', value: total, icon: <Users size={20} />, textColor: 'text-indigo-600', bgColor: 'bg-indigo-50' },
         { label: 'Total Members', value: totalMembers, icon: <UserPlus size={20} />, textColor: 'text-emerald-600', bgColor: 'bg-emerald-50' },
         { label: 'Events Active', value: Object.keys(eventBreakdown).length, icon: <Calendar size={20} />, textColor: 'text-sky-600', bgColor: 'bg-sky-50' },
+        { label: 'Website Visits', value: visitStats.total, icon: <MousePointerClick size={20} />, textColor: 'text-violet-600', bgColor: 'bg-violet-50' },
     ];
 
     if (loading) {
@@ -204,7 +212,7 @@ function DashboardView() {
 
     return (
         <div className="space-y-8">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {cards.map((card, i) => (
                     <div key={i} className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
                         <div className={`${card.bgColor} ${card.textColor} w-10 h-10 rounded-lg flex items-center justify-center mb-4`}>
@@ -214,6 +222,31 @@ function DashboardView() {
                         <p className="text-2xl font-black text-slate-900 tracking-tight">{card.value}</p>
                     </div>
                 ))}
+            </div>
+
+            {/* Visitor Analytics Card */}
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <h3 className="text-slate-900 font-bold text-sm mb-6 flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-violet-500 rounded-full"></div>
+                    Visitor Analytics
+                </h3>
+                <div className="grid grid-cols-3 gap-4">
+                    <div className="bg-violet-50 rounded-xl p-4 text-center">
+                        <MousePointerClick size={20} className="text-violet-500 mx-auto mb-2" />
+                        <p className="text-2xl font-black text-violet-700 tracking-tight">{visitStats.total}</p>
+                        <p className="text-[10px] font-bold text-violet-400 uppercase tracking-wider mt-1">Total Visits</p>
+                    </div>
+                    <div className="bg-sky-50 rounded-xl p-4 text-center">
+                        <Globe size={20} className="text-sky-500 mx-auto mb-2" />
+                        <p className="text-2xl font-black text-sky-700 tracking-tight">{visitStats.unique}</p>
+                        <p className="text-[10px] font-bold text-sky-400 uppercase tracking-wider mt-1">Unique Visitors</p>
+                    </div>
+                    <div className="bg-emerald-50 rounded-xl p-4 text-center">
+                        <Eye size={20} className="text-emerald-500 mx-auto mb-2" />
+                        <p className="text-2xl font-black text-emerald-700 tracking-tight">{visitStats.today}</p>
+                        <p className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider mt-1">Today's Visits</p>
+                    </div>
+                </div>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-6">

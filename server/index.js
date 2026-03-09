@@ -269,6 +269,45 @@ app.delete('/api/registrations/:id', async (req, res) => {
     }
 });
 
+// ──────────────────────────────────────────────
+// POST /api/visit — Record a page visit
+// ──────────────────────────────────────────────
+app.post('/api/visit', async (req, res) => {
+    try {
+        const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
+        const userAgent = req.headers['user-agent'] || 'unknown';
+        await db.query(
+            'INSERT INTO site_visits (ip_address, user_agent) VALUES ($1, $2)',
+            [typeof ip === 'string' ? ip.split(',')[0].trim() : ip, userAgent]
+        );
+        res.status(201).json({ message: 'Visit recorded.' });
+    } catch (err) {
+        console.error('Visit tracking error:', err);
+        res.status(500).json({ error: 'Failed to record visit.' });
+    }
+});
+
+// ──────────────────────────────────────────────
+// GET /api/visits/count — Get visitor statistics
+// ──────────────────────────────────────────────
+app.get('/api/visits/count', async (req, res) => {
+    try {
+        const totalResult = await db.query('SELECT COUNT(*) AS total FROM site_visits');
+        const uniqueResult = await db.query('SELECT COUNT(DISTINCT ip_address) AS unique_visitors FROM site_visits');
+        const todayResult = await db.query(
+            "SELECT COUNT(*) AS today FROM site_visits WHERE visited_at >= CURRENT_DATE"
+        );
+        res.json({
+            total: parseInt(totalResult.rows[0].total),
+            unique: parseInt(uniqueResult.rows[0].unique_visitors),
+            today: parseInt(todayResult.rows[0].today),
+        });
+    } catch (err) {
+        console.error('Visit count error:', err);
+        res.status(500).json({ error: 'Failed to get visit count.' });
+    }
+});
+
 // Serve uploaded files
 app.use('/uploads', express.static(uploadsDir));
 

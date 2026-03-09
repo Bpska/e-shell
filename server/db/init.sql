@@ -31,3 +31,10 @@ CREATE TABLE IF NOT EXISTS team_members (
     phone VARCHAR(20) NOT NULL,
     is_optional BOOLEAN DEFAULT FALSE
 );
+
+CREATE TABLE IF NOT EXISTS site_visits (
+    id SERIAL PRIMARY KEY,
+    ip_address VARCHAR(45),
+    user_agent TEXT,
+    visited_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

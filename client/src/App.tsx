@@ -37,6 +37,15 @@ function App() {
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
+  // Track page visit (once per session)
+  useEffect(() => {
+    if (!sessionStorage.getItem('visit_tracked')) {
+      const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+      fetch(`${apiBase}/visit`, { method: 'POST' }).catch(() => { });
+      sessionStorage.setItem('visit_tracked', '1');
+    }
+  }, []);
+
   // Scroll to section when hash changes
   useEffect(() => {
     const hash = window.location.hash;
