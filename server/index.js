@@ -308,6 +308,44 @@ app.get('/api/visits/count', async (req, res) => {
     }
 });
 
+// ──────────────────────────────────────────────
+// POST /api/partner — Submit a partnership inquiry
+// ──────────────────────────────────────────────
+app.post('/api/partner', async (req, res) => {
+    try {
+        const { organizationName, contactPerson, email, phone, partnershipTier, message } = req.body;
+
+        if (!organizationName || !contactPerson || !email || !phone) {
+            return res.status(400).json({ error: 'Organization name, contact person, email, and phone are required.' });
+        }
+
+        const result = await db.query(
+            `INSERT INTO partner_inquiries (organization_name, contact_person, email, phone, partnership_tier, message)
+             VALUES ($1, $2, $3, $4, $5, $6)
+             RETURNING id`,
+            [organizationName, contactPerson, email, phone, partnershipTier || null, message || null]
+        );
+
+        res.status(201).json({ message: 'Partnership inquiry submitted successfully!', inquiryId: result.rows[0].id });
+    } catch (err) {
+        console.error('Partner inquiry error:', err);
+        res.status(500).json({ error: 'Server error. Please try again later.' });
+    }
+});
+
+// ──────────────────────────────────────────────
+// GET /api/partners — List all partnership inquiries
+// ──────────────────────────────────────────────
+app.get('/api/partners', async (req, res) => {
+    try {
+        const result = await db.query('SELECT * FROM partner_inquiries ORDER BY created_at DESC');
+        res.json(result.rows);
+    } catch (err) {
+        console.error('Fetch partners error:', err);
+        res.status(500).json({ error: 'Server error.' });
+    }
+});
+
 // Serve uploaded files
 app.use('/uploads', express.static(uploadsDir));
 

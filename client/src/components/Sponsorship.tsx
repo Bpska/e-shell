@@ -46,12 +46,6 @@ export default function Sponsorship() {
     }
   ];
 
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section id="sponsorship" className="py-24 bg-gradient-to-br from-[#F7E7C6] via-white to-[#F7E7C6] relative overflow-hidden">
@@ -102,7 +96,7 @@ export default function Sponsorship() {
 
         <div className="text-center">
           <button
-            onClick={scrollToContact}
+            onClick={() => { window.location.hash = '#/partner'; }}
             className="premium-button group inline-flex items-center gap-3 sm:gap-4 px-8 sm:px-12 py-4 sm:py-6 bg-[#7A1F1F] text-[#F7E7C6] rounded-3xl font-black text-lg sm:text-2xl border-b-8 border-[#5A1515]"
           >
             BECOME A PARTNER

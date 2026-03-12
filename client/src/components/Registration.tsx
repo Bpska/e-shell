@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowLeft, ArrowRight, Users, Building2, MapPin, Phone, Mail, Lightbulb, FileText, Upload, UserPlus, CheckCircle, AlertCircle, Trash2, Video, User, Rocket, Megaphone, Presentation } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Users, Building2, MapPin, Phone, Mail, Lightbulb, FileText, Upload, UserPlus, CheckCircle, AlertCircle, Trash2, Video, User, Rocket, Megaphone, Presentation, Ticket, ExternalLink } from 'lucide-react';
 
 interface RegistrationProps {
     eventName?: string;
@@ -307,7 +307,7 @@ export default function Registration({ eventName }: RegistrationProps) {
                                     Select A Competition
                                 </h3>
                                 <div className="flex flex-col gap-6">
-                                    {events.map((ev) => (
+                                {events.map((ev) => (
                                         <div
                                             key={ev.id}
                                             onClick={() => {
@@ -330,6 +330,28 @@ export default function Registration({ eventName }: RegistrationProps) {
                                             </div>
                                         </div>
                                     ))}
+
+                                    {/* ── VISITOR PASS CARD ── */}
+                                    <div
+                                        onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSfQQdwplOOcglZXYFIcv2PNBT8Gth1pETiFM2DjRNn2av4HRw/viewform?usp=header', '_blank')}
+                                        className="bg-gradient-to-r from-[#D4A017]/10 via-[#F7E7C6]/40 to-[#D4A017]/10 border-2 border-[#D4A017]/40 rounded-3xl p-6 sm:p-8 cursor-pointer hover:border-[#D4A017] hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden flex flex-col sm:flex-row items-start sm:items-center gap-6"
+                                    >
+                                        <div className="p-4 bg-gradient-to-br from-[#D4A017] to-[#7A1F1F] rounded-2xl shadow-lg group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+                                            <Ticket size={24} className="text-white" />
+                                        </div>
+                                        <div>
+                                            <h4 className="text-xl sm:text-2xl font-black text-[#7A1F1F] mb-2">VISITOR PASS</h4>
+                                            <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">
+                                                Not competing? Get your free Visitor Pass to experience all the excitement at UTKALPRENEUR E-FEST 2026.
+                                            </p>
+                                            <span className="inline-flex items-center gap-2 mt-3 text-sm font-black text-[#D4A017] uppercase tracking-wider group-hover:gap-3 transition-all">
+                                                Apply Now <ExternalLink size={16} />
+                                            </span>
+                                        </div>
+                                        <div className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 -translate-x-4 transition-all duration-300 hidden sm:block text-[#D4A017]">
+                                            <ExternalLink size={24} />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         ) : !showForm ? (

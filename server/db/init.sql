@@ -38,3 +38,14 @@ CREATE TABLE IF NOT EXISTS site_visits (
     user_agent TEXT,
     visited_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS partner_inquiries (
+    id SERIAL PRIMARY KEY,
+    organization_name VARCHAR(255) NOT NULL,
+    contact_person VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    partnership_tier VARCHAR(50),
+    message TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
