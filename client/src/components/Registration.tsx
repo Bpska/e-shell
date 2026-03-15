@@ -342,7 +342,7 @@ export default function Registration({ eventName }: RegistrationProps) {
                                         <div>
                                             <h4 className="text-xl sm:text-2xl font-black text-[#7A1F1F] mb-2">VISITOR PASS</h4>
                                             <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">
-                                                Not competing? Get your free Visitor Pass to experience all the excitement at UTKALPRENEUR E-FEST 2026.
+                                                Not competing? Experience all the excitement at UTKALPRENEUR E-FEST 2026.
                                             </p>
                                             <span className="inline-flex items-center gap-2 mt-3 text-sm font-black text-[#D4A017] uppercase tracking-wider group-hover:gap-3 transition-all">
                                                 Apply Now <ExternalLink size={16} />
