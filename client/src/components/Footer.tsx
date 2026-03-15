@@ -1,4 +1,4 @@
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, Link } from 'lucide-react';
 import logo from '../image/newlogo.png';
 
 export default function Footer() {
@@ -74,6 +74,7 @@ export default function Footer() {
             <div className="flex gap-4 mb-10">
               {[
                 { Icon: Facebook, href: '#' },
+                { Icon: Link, href: 'https://linktr.ee/utkalpreneurefest2k26' },
                 { Icon: Twitter, href: '#' },
                 { Icon: Instagram, href: 'https://www.instagram.com/ecellnalanda?igsh=dnpwdHR3NHk0aGJ6' },
                 { Icon: Linkedin, href: '#' },

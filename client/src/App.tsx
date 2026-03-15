@@ -5,7 +5,6 @@ import About from './components/About';
 import Theme from './components/Theme';
 import VisionMission from './components/VisionMission';
 import WhyAttend from './components/WhyAttend';
-import Events from './components/Events';
 import Prizes from './components/Prizes';
 import Countdown from './components/Countdown';
 import Schedule from './components/Schedule';
@@ -80,7 +79,7 @@ function VisitorPassPopup() {
         {/* Body */}
         <div className="p-8 text-center">
           <p className="text-gray-600 font-medium text-base leading-relaxed mb-6">
-            Not competing? Get your <span className="text-[#7A1F1F] font-black">free Visitor Pass</span> to experience all the excitement at <span className="text-[#7A1F1F] font-black">UTKALPRENEUR E-FEST 2026</span>!
+            Not competing? Experience all the excitement at <span className="text-[#7A1F1F] font-black">UTKALPRENEUR E-FEST 2026</span>!
           </p>
           <p className="text-sm text-gray-400 font-medium mb-8">March 21-22, 2026 • NIT Bhubaneswar</p>
           <a
